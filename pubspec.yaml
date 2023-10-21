@@ -13,12 +13,15 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   dio:
+  permission_handler:
   geolocator:
   flutter_bloc:
   get_it:
   lottie:
   iconsax:
   shared_preferences:
+  equatable:
+  svg_flutter:
 
 dev_dependencies:
   flutter_test:
@@ -35,6 +38,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/weather/
+    - assets/images/
     - assets/lottie/
   #   - images/a_dot_ham.jpeg
 

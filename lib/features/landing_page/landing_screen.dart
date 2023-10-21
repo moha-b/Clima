@@ -10,23 +10,26 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NavBarBloc, NavBarState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
-      builder: (context, state) {
-        return Scaffold(
-          body: screens.elementAt(state.tabIndex),
-          bottomNavigationBar: BottomNavigationBar(
-            onTap: (index) {
-              BlocProvider.of<NavBarBloc>(context)
-                  .add(TabChange(tabIndex: index));
-            },
-            currentIndex: state.tabIndex,
-            items: bottomNavItems,
-          ),
-        );
-      },
+    return BlocProvider(
+      create: (context) => NavBarBloc(),
+      child: BlocConsumer<NavBarBloc, NavBarState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return Scaffold(
+            body: screens.elementAt(state.tabIndex),
+            bottomNavigationBar: BottomNavigationBar(
+              onTap: (index) {
+                BlocProvider.of<NavBarBloc>(context)
+                    .add(TabChange(tabIndex: index));
+              },
+              currentIndex: state.tabIndex,
+              items: bottomNavItems,
+            ),
+          );
+        },
+      ),
     );
   }
 }
