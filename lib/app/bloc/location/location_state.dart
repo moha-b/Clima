@@ -7,10 +7,7 @@ abstract class LocationState extends Equatable {
 
 class LocationInitial extends LocationState {}
 
-class AskForLocationPermissionState extends LocationState {
-  final String lottie = AppImages.fetchLocation;
-  final String text = "Looking for your location";
-}
+class AskForLocationPermissionState extends LocationState {}
 
 class FetchCurrentLocationState extends LocationState {
   double? latitude;
@@ -22,8 +19,4 @@ class FetchCurrentLocationState extends LocationState {
   List<Object> get props => [];
 }
 
-class LocationPermissionDeniedState extends LocationState {
-  final String lottie = AppImages.locationNotFound;
-  final String text =
-      "The app requires access to your location in order to provide accurate weather information.\n Please enable location services to enjoy the app's full functionality.";
-}
+class LocationPermissionDeniedState extends LocationState {}

@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../core/utils/app_images.dart';
+
 class PermissionDeniedWidget extends StatefulWidget {
   const PermissionDeniedWidget({
     super.key,
-    required this.lottie,
-    required this.text,
   });
-  final String lottie;
-  final String text;
 
   @override
   State<PermissionDeniedWidget> createState() => _PermissionDeniedWidgetState();
@@ -48,7 +46,6 @@ class _PermissionDeniedWidgetState extends State<PermissionDeniedWidget>
       home: Scaffold(
         floatingActionButton: PrimaryButton(
           onTap: () {
-            print("triggered");
             context.read<LocationBloc>().add(RetryPermissionEvent());
           },
           isBorder: true,
@@ -63,7 +60,7 @@ class _PermissionDeniedWidgetState extends State<PermissionDeniedWidget>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Lottie.asset(
-                  widget.lottie,
+                  AppImages.locationNotFound,
                   fit: BoxFit.cover,
                   controller: _controller,
                   onLoaded: (composition) {
@@ -71,7 +68,9 @@ class _PermissionDeniedWidgetState extends State<PermissionDeniedWidget>
                     _controller.forward();
                   },
                 ),
-                Text(widget.text, textAlign: TextAlign.center),
+                const Text(
+                    "The app requires access to your location in order to provide accurate weather information.\n Please enable location services to enjoy the app's full functionality.",
+                    textAlign: TextAlign.center),
               ],
             ),
           ),

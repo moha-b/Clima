@@ -1,3 +1,5 @@
+import 'package:elemental/app/bloc/theme/theme_cubit.dart';
+import 'package:elemental/core/constant/constants.dart';
 import 'package:elemental/features/home/cubit/home_cubit.dart';
 import 'package:elemental/features/home/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       listener: (context, state) {
         // TODO: implement listener
         if (state is HomeSuccessState) {
-          //context.read<AppBloc>().changeTheme(state);
+          BlocProvider.of<ThemeCubit>(context).switchTheme(isNight);
         }
       },
       builder: (context, state) {

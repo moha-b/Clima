@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../core/utils/app_images.dart';
+
 class WaitingPermissionWidget extends StatelessWidget {
-  const WaitingPermissionWidget(
-      {super.key, required this.lottie, required this.text});
-  final String lottie;
-  final String text;
+  const WaitingPermissionWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,8 +14,8 @@ class WaitingPermissionWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset(lottie, fit: BoxFit.cover),
-              Text(text),
+              Lottie.asset(AppImages.fetchLocation, fit: BoxFit.cover),
+              const Text("Looking for your location"),
             ],
           ),
         ),
