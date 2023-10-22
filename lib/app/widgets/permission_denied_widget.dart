@@ -1,4 +1,4 @@
-import 'package:elemental/app/bloc/app_bloc.dart';
+import 'package:elemental/app/bloc/location/location_bloc.dart';
 import 'package:elemental/core/common/primary_button.dart';
 import 'package:elemental/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class _PermissionDeniedWidgetState extends State<PermissionDeniedWidget>
         floatingActionButton: PrimaryButton(
           onTap: () {
             print("triggered");
-            context.read<AppBloc>().add(RetryPermissionEvent());
+            context.read<LocationBloc>().add(RetryPermissionEvent());
           },
           isBorder: true,
           color: AppColors.white,

@@ -1,27 +1,18 @@
-part of 'app_bloc.dart';
+part of 'location_bloc.dart';
 
-abstract class AppState extends Equatable {
-  const AppState();
+abstract class LocationState extends Equatable {
+  const LocationState();
   List<Object> get props => [];
 }
 
-class AppInitial extends AppState {}
+class LocationInitial extends LocationState {}
 
-class ThemeChangedState extends AppState {
-  final ThemeMode theme;
-
-  const ThemeChangedState(this.theme);
-
-  @override
-  List<Object> get props => [theme];
-}
-
-class AskForLocationPermissionState extends AppState {
+class AskForLocationPermissionState extends LocationState {
   final String lottie = AppImages.fetchLocation;
   final String text = "Looking for your location";
 }
 
-class FetchCurrentLocationState extends AppState {
+class FetchCurrentLocationState extends LocationState {
   double? latitude;
   double? longitude;
 
@@ -31,7 +22,7 @@ class FetchCurrentLocationState extends AppState {
   List<Object> get props => [];
 }
 
-class LocationPermissionDeniedState extends AppState {
+class LocationPermissionDeniedState extends LocationState {
   final String lottie = AppImages.locationNotFound;
   final String text =
       "The app requires access to your location in order to provide accurate weather information.\n Please enable location services to enjoy the app's full functionality.";

@@ -5,7 +5,7 @@ import 'package:elemental/features/landing_page/landing_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/app_bloc.dart';
+import 'bloc/location/location_bloc.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     AppDimensions.config(context);
     return BlocProvider(
-      create: (context) => AppBloc()..add(GetLocationEvent()),
-      child: BlocConsumer<AppBloc, AppState>(
+      create: (context) => LocationBloc()..add(GetLocationEvent()),
+      child: BlocConsumer<LocationBloc, LocationState>(
         listener: (context, state) {
           // todo: anything
           if (state is FetchCurrentLocationState) {
@@ -40,7 +40,6 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               darkTheme: AppThemes.dark,
               theme: AppThemes.light,
-              themeMode: context.read<AppBloc>().getCurrentTheme(),
               home: LandingScreen(
                 lat: state.latitude,
                 lon: state.longitude,
