@@ -15,6 +15,7 @@ dependencies:
   dio:
   permission_handler:
   geolocator:
+  dartz:
   flutter_bloc:
   get_it:
   lottie:

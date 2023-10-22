@@ -2,7 +2,7 @@ import '../constant/constants.dart';
 import '../utils/app_images.dart';
 import 'converter_helper.dart';
 
-String convertTimeToText(int time) {
+String convertTimeToReadableDate(int time) {
   DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(time * 1000);
   return DateFormatter.format(dateTime);
 }

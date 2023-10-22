@@ -1,4 +1,4 @@
-import 'package:elemental/app/data/weather_model.dart';
+import 'package:elemental/features/home/data/model/weather_model.dart';
 
 bool isNight = false;
 double? latitude;

@@ -41,7 +41,10 @@ class MyApp extends StatelessWidget {
               darkTheme: AppThemes.dark,
               theme: AppThemes.light,
               themeMode: context.read<AppBloc>().getCurrentTheme(),
-              home: const LandingScreen(),
+              home: LandingScreen(
+                lat: state.latitude,
+                lon: state.longitude,
+              ),
             );
           } else {
             return const MaterialApp(
