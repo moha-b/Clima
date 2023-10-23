@@ -1,5 +1,5 @@
+import 'package:elemental/core/animations/play_lottie.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../core/utils/app_images.dart';
 
@@ -8,16 +8,14 @@ class WaitingPermissionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Lottie.asset(AppImages.fetchLocation, fit: BoxFit.cover),
-              const Text("Looking for your location"),
-            ],
-          ),
+    return const Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            PlayLottie(lottie: AppLottie.fetchLocation),
+            Text("Looking for your location"),
+          ],
         ),
       ),
     );

@@ -10,15 +10,13 @@ class StateWidget extends StatelessWidget {
   final String? text;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Lottie.asset(lottie ?? AppImages.failure, fit: BoxFit.cover),
-            Text(text ?? "Error"),
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          PlayLottie(lottie: lottie ?? AppLottie.failure),
+          Text(text ?? "Error"),
+        ],
       ),
     );
   }

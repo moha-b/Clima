@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 abstract class IErrorHandler {
-  final String errorMessage;
+  final String message;
 
-  IErrorHandler(this.errorMessage);
+  IErrorHandler(this.message);
 }
 
 class ServerFailure extends IErrorHandler {

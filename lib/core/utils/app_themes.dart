@@ -14,6 +14,12 @@ class AppThemes {
     brightness: Brightness.dark,
     bottomNavigationBarTheme: BottomNavigationBarThemes.dark,
   );
+  static ThemeData basic = ThemeData(
+    scaffoldBackgroundColor: AppColors.basic,
+    primaryColor: AppColors.white,
+    brightness: Brightness.dark,
+    bottomNavigationBarTheme: BottomNavigationBarThemes.dark,
+  );
 }
 
 class BottomNavigationBarThemes {

@@ -5,9 +5,11 @@ class WeatherStatus extends StatelessWidget {
     super.key,
     required this.temperature,
     required this.weatherState,
+    this.textColor,
   });
   final String? temperature;
   final String? weatherState;
+  final Color? textColor;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -16,24 +18,31 @@ class WeatherStatus extends StatelessWidget {
         GradientText(
           temperature!,
           style: AppTypography.bold144(),
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: isNight ? [0.3, 1.0] : [0.4, 1.0],
-            colors: isNight
-                ? [
+          gradient: isNight
+              ? const LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  stops: [
+                      0.3,
+                      1
+                    ],
+                  colors: [
+                      AppColors.white,
+                      AppColors.primary,
+                    ])
+              : const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.5, 1.0],
+                  colors: [
+                    AppColors.primary,
                     AppColors.white,
-                    const Color(0xff111827),
-                  ]
-                : [
-                    const Color(0xff111827),
-                    const Color(0xff6B7280),
                   ],
-          ),
+                ),
         ),
         Text(weatherState!,
             style: AppTypography.bold24(
-              color: const Color(0xFFFE8E26),
+              color: textColor,
             )),
       ],
     );

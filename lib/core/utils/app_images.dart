@@ -19,10 +19,14 @@ class AppImages {
   static const String nightSnow = "$_weatherImagesPath/Night Snow.png";
   static const String nightStorm = "$_weatherImagesPath/Night Storm.png";
   static const String nightWind = "$_weatherImagesPath/Night Wind.png";
+}
 
+class AppLottie {
+  static const String _lottiePath = "assets/lottie";
   //
-  static const String fetchLocation = "assets/lottie/location.json";
-  static const String locationNotFound =
-      "assets/lottie/location_not_found.json";
-  static const String failure = "assets/lottie/faliure.json";
+  static const String fetchLocation = "$_lottiePath/location.json";
+  static const String locationNotFound = "$_lottiePath/location_not_found.json";
+  static const String failure = "$_lottiePath/faliure.json";
+  static const String noInternet = "$_lottiePath/no_internet.json";
+  static const String loadingWeather = "$_lottiePath/loading_weather.json";
 }

@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
             weatherState: state.weatherData.weatherState,
             cityName: state.weatherData.cityName,
             image: state.weatherImage,
+            textColor: state.textColor,
           );
         } else if (state is HomeErrorState) {
           return StateWidget(text: state.error);
@@ -47,12 +48,14 @@ class HomeWidget extends StatelessWidget {
     required this.weatherState,
     required this.temperature,
     required this.image,
+    required this.textColor,
   });
   final String cityName;
   final String time;
   final String weatherState;
   final String temperature;
   final String image;
+  final Color textColor;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -85,6 +88,7 @@ class HomeWidget extends StatelessWidget {
               child: WeatherStatus(
                 temperature: temperature,
                 weatherState: weatherState,
+                textColor: textColor,
               ),
             ),
           ],

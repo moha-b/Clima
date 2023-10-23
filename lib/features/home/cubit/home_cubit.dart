@@ -2,8 +2,9 @@ import 'package:elemental/core/constant/constants.dart';
 import 'package:elemental/core/helper/functions.dart';
 import 'package:elemental/core/utils/app_images.dart';
 import 'package:elemental/features/home/data/model/weather_model.dart';
+import 'package:elemental/features/home/data/model/weather_theme.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../data/repo/home_repo.dart';
 
@@ -19,17 +20,20 @@ class HomeCubit extends Cubit<HomeState> {
   }) async {
     final data = await repository.getTodayWeather(latitude, longitude);
     try {
-      data.fold((l) {
-        print(l.errorMessage);
-        emit(HomeErrorState(error: l.errorMessage));
+      data.fold((error) {
+        emit(HomeErrorState(error: error.message));
       }, (weather) {
+        /// [isNight] is a global value => lib/core/constant/constants.dart
         isNight = isNightTime(weather.sys.sunrise, weather.sys.sunset);
+        WeatherTheme? theme =
+            weatherThemes[mapWeatherState(weather.weatherState)];
         emit(
           HomeSuccessState(
             weatherData: weather,
             todayDate: convertTimeToReadableDate(weather.time),
             temperature: convertTemperatureToCelsius(weather.temperature),
-            weatherImage: getImagePath(weather.weatherState),
+            weatherImage: isNight ? theme!.nightImage : theme!.dayImage,
+            textColor: theme.textColor,
           ),
         );
       });

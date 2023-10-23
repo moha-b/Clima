@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeData> {
-  ThemeCubit() : super(AppThemes.light);
+  ThemeCubit() : super(AppThemes.basic);
 
   void switchTheme(bool isNight) {
     if (isNight) {
