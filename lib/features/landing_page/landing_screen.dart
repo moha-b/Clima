@@ -1,10 +1,10 @@
-import 'package:elemental/core/services/get_it_service.dart';
-import 'package:elemental/features/home/cubit/home_cubit.dart';
-import 'package:elemental/features/home/data/repo/home_repo.dart';
-import 'package:elemental/features/landing_page/widgets/bottom_nav_bar_list.dart';
-import 'package:elemental/features/landing_page/widgets/permission_denied_widget.dart';
-import 'package:elemental/features/landing_page/widgets/screens.dart';
-import 'package:elemental/features/landing_page/widgets/waiting_permission_widget.dart';
+import 'package:clima/core/services/get_it_service.dart';
+import 'package:clima/features/home/cubit/home_cubit.dart';
+import 'package:clima/features/home/data/repo/home_repo.dart';
+import 'package:clima/features/landing_page/widgets/bottom_nav_bar_list.dart';
+import 'package:clima/features/landing_page/widgets/permission_denied_widget.dart';
+import 'package:clima/features/landing_page/widgets/screens.dart';
+import 'package:clima/features/landing_page/widgets/waiting_permission_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,4 @@
-import 'package:elemental/core/utils/utils.dart';
+import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class WeatherTheme {

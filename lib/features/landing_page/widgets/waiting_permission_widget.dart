@@ -1,4 +1,4 @@
-import 'package:elemental/core/animations/play_lottie.dart';
+import 'package:clima/core/animations/play_lottie.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/utils/app_images.dart';

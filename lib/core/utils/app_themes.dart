@@ -1,4 +1,4 @@
-import 'package:elemental/core/utils/app_colors.dart';
+import 'package:clima/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppThemes {

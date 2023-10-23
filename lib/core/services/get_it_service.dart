@@ -1,6 +1,6 @@
-import 'package:elemental/core/services/api_service.dart';
-import 'package:elemental/features/home/data/repo/home_repo.dart';
-import 'package:elemental/features/home/data/repo/home_repo_impl.dart';
+import 'package:clima/core/services/api_service.dart';
+import 'package:clima/features/home/data/repo/home_repo.dart';
+import 'package:clima/features/home/data/repo/home_repo_impl.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;

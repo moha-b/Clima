@@ -1,8 +1,8 @@
-import 'package:elemental/core/constant/constants.dart';
-import 'package:elemental/core/helper/functions.dart';
-import 'package:elemental/core/utils/app_images.dart';
-import 'package:elemental/features/home/data/model/weather_model.dart';
-import 'package:elemental/features/home/data/model/weather_theme.dart';
+import 'package:clima/core/constant/constants.dart';
+import 'package:clima/core/helper/functions.dart';
+import 'package:clima/core/utils/app_images.dart';
+import 'package:clima/features/home/data/model/weather_model.dart';
+import 'package:clima/features/home/data/model/weather_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

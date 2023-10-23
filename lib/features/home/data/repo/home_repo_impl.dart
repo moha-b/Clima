@@ -1,10 +1,10 @@
+import 'package:clima/core/constant/apis.dart';
+import 'package:clima/core/error/error_handling.dart';
+import 'package:clima/core/services/api_service.dart';
+import 'package:clima/features/home/data/model/weather_model.dart';
+import 'package:clima/features/home/data/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:elemental/core/constant/apis.dart';
-import 'package:elemental/core/error/error_handling.dart';
-import 'package:elemental/core/services/api_service.dart';
-import 'package:elemental/features/home/data/model/weather_model.dart';
-import 'package:elemental/features/home/data/repo/home_repo.dart';
 
 class HomeRepoImpl extends HomeRepository {
   final ApiService client;

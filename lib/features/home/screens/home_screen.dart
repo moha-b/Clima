@@ -1,7 +1,7 @@
-import 'package:elemental/app/bloc/theme/theme_cubit.dart';
-import 'package:elemental/core/constant/constants.dart';
-import 'package:elemental/features/home/cubit/home_cubit.dart';
-import 'package:elemental/features/home/screens/widgets/widgets.dart';
+import 'package:clima/app/bloc/theme/theme_cubit.dart';
+import 'package:clima/core/constant/constants.dart';
+import 'package:clima/features/home/cubit/home_cubit.dart';
+import 'package:clima/features/home/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';

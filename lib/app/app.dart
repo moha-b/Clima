@@ -1,7 +1,7 @@
-import 'package:elemental/app/bloc/network/network_cubit.dart';
-import 'package:elemental/app/bloc/theme/theme_cubit.dart';
-import 'package:elemental/core/utils/utils.dart';
-import 'package:elemental/features/home/screens/widgets/widgets.dart';
+import 'package:clima/app/bloc/network/network_cubit.dart';
+import 'package:clima/app/bloc/theme/theme_cubit.dart';
+import 'package:clima/core/utils/utils.dart';
+import 'package:clima/features/home/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ThemeCubit, ThemeData>(
         builder: (context, theme) {
           return MaterialApp(
-            title: "Elemental",
+            title: "Clima",
             theme: theme,
             debugShowCheckedModeBanner: false,
             home: BlocBuilder<NetworkCubit, NetworkState>(

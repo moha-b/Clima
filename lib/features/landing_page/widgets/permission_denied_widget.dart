@@ -1,5 +1,5 @@
-import 'package:elemental/core/common/primary_button.dart';
-import 'package:elemental/core/utils/app_colors.dart';
+import 'package:clima/core/common/primary_button.dart';
+import 'package:clima/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
