@@ -1,11 +1,11 @@
-import 'package:elemental/app/bloc/location/location_bloc.dart';
 import 'package:elemental/core/common/primary_button.dart';
 import 'package:elemental/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../core/animations/play_lottie.dart';
-import '../../core/utils/app_images.dart';
+import '../../../core/animations/play_lottie.dart';
+import '../../../core/utils/app_images.dart';
+import '../bloc/location/location_bloc.dart';
 
 class PermissionDeniedWidget extends StatelessWidget {
   const PermissionDeniedWidget({

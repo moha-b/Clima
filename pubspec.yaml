@@ -23,6 +23,7 @@ dependencies:
   shared_preferences:
   equatable:
   svg_flutter:
+  connectivity_plus:
 
 dev_dependencies:
   flutter_test:

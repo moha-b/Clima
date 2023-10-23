@@ -14,7 +14,7 @@ class StateWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          PlayLottie(lottie: lottie ?? AppLottie.failure),
+          PlayLottie(lottie: lottie ?? AppLottie.failure, repeat: true),
           Text(text ?? "Error"),
         ],
       ),

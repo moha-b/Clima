@@ -3,9 +3,13 @@ import 'package:lottie/lottie.dart';
 
 class PlayLottie extends StatefulWidget {
   const PlayLottie(
-      {super.key, required this.lottie, this.isPlayBackAndForward = false});
+      {super.key,
+      required this.lottie,
+      this.isPlayBackAndForward = false,
+      this.repeat = false});
   final String lottie;
   final bool isPlayBackAndForward;
+  final bool repeat;
   @override
   State<PlayLottie> createState() => _PlayLottieState();
 }
@@ -24,6 +28,20 @@ class _PlayLottieState extends State<PlayLottie> with TickerProviderStateMixin {
           // When animation completes, reverse it after a delay
           Future.delayed(const Duration(seconds: 2), () {
             _controller.reverse();
+          });
+        } else if (status == AnimationStatus.dismissed) {
+          // When animation is reversed completely, play it again
+          _controller.forward();
+        }
+      });
+    }
+
+    if (widget.repeat) {
+      _controller.addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          // When animation completes, reverse it after a delay
+          Future.delayed(const Duration(seconds: 2), () {
+            _controller.repeat();
           });
         } else if (status == AnimationStatus.dismissed) {
           // When animation is reversed completely, play it again
