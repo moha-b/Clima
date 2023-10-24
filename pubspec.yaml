@@ -1,6 +1,5 @@
 name: clima
 
-
 version: 1.0.0+1
 
 environment:
@@ -22,7 +21,6 @@ dependencies:
   iconsax:
   shared_preferences:
   equatable:
-  svg_flutter:
   connectivity_plus:
 
 dev_dependencies:

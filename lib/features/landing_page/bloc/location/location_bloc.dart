@@ -15,8 +15,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       if (serviceEnabled) {
         emit(AskForLocationPermissionState());
         if (status.isGranted) {
-          Position position = await Geolocator.getCurrentPosition(
-              desiredAccuracy: LocationAccuracy.high);
+          Position position = await Geolocator.getCurrentPosition();
           emit(FetchCurrentLocationState(
             latitude: position.latitude,
             longitude: position.longitude,

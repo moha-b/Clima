@@ -18,7 +18,6 @@ class NetworkCubit extends Cubit<NetworkState> {
       print(result);
       if (result == ConnectivityResult.wifi ||
           result == ConnectivityResult.mobile) {
-        print(result.name);
         emit(ConnectedSuccess());
       } else {
         emit(ConnectedFailure());

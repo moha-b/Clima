@@ -37,7 +37,7 @@ class LandingScreen extends StatelessWidget {
           } else if (state is FetchCurrentLocationState) {
             BlocProvider.of<HomeCubit>(context).getTodayWeather(
               latitude: state.latitude,
-              longitude: state.latitude,
+              longitude: state.longitude,
             );
 
             return BlocBuilder<NavBarBloc, NavBarState>(

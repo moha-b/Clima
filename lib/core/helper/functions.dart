@@ -1,3 +1,9 @@
+import 'package:clima/core/helper/lotte_cach_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../services/get_it_service.dart';
+import 'bloc_observer.dart';
 import 'converter_helper.dart';
 
 String convertTimeToReadableDate(int time) {
@@ -43,4 +49,11 @@ String mapWeatherState(String apiWeatherMain) {
     default:
       return 'Unknown';
   }
+}
+
+initialization() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setup();
+  Bloc.observer = MyBlocObserver();
+  LottieCache.cache();
 }
