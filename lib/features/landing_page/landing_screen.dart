@@ -1,4 +1,6 @@
 import 'package:clima/core/services/get_it_service.dart';
+import 'package:clima/features/forecast_5_days/cubit/forecast_5_days_cubit.dart';
+import 'package:clima/features/forecast_5_days/data/repo/forecast_5_days_repo.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/data/repo/home_repo.dart';
 import 'package:clima/features/landing_page/widgets/bottom_nav_bar_list.dart';
@@ -27,6 +29,10 @@ class LandingScreen extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeCubit(getIt.get<HomeRepository>()),
         ),
+        BlocProvider(
+          create: (context) =>
+              Forecast5DaysCubit(getIt.get<Forecast5DaysRepository>()),
+        ),
       ],
       child: BlocBuilder<LocationBloc, LocationState>(
         builder: (context, state) {
@@ -38,6 +44,10 @@ class LandingScreen extends StatelessWidget {
             BlocProvider.of<HomeCubit>(context).getTodayWeather(
               latitude: state.latitude,
               longitude: state.longitude,
+            );
+            BlocProvider.of<Forecast5DaysCubit>(context).fetchForecast5DaysData(
+              lat: state.latitude,
+              lon: state.longitude,
             );
 
             return BlocBuilder<NavBarBloc, NavBarState>(

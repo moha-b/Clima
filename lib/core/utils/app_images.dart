@@ -7,7 +7,6 @@ class AppImages {
   static const String daySnow = "$_weatherImagesPath/Day Snow.webp";
   static const String dayStorm = "$_weatherImagesPath/Day Storm.webp";
   static const String dayWind = "$_weatherImagesPath/Day Wind.webp";
-
   //
   static const String nightMoon = "$_weatherImagesPath/Night Moon.webp";
   static const String nightClouds = "$_weatherImagesPath/Night Clouds.webp";
@@ -15,6 +14,20 @@ class AppImages {
   static const String nightSnow = "$_weatherImagesPath/Night Snow.webp";
   static const String nightStorm = "$_weatherImagesPath/Night Storm.webp";
   static const String nightWind = "$_weatherImagesPath/Night Wind.webp";
+  //
+  static const String dailyNight = "$_weatherImagesPath/moon.svg";
+  static const String dailyNightWind = "$_weatherImagesPath/Night Wind.svg";
+  static const String dailyNightStorm = "$_weatherImagesPath/Night Storm.svg";
+  static const String dailyNightSnow = "$_weatherImagesPath/Night Snow.svg";
+  static const String dailyNightRain = "$_weatherImagesPath/Night Rain.svg";
+  static const String dailyNightCloud = "$_weatherImagesPath/Night Cloud.svg";
+  //
+  static const String dailyDay = "$_weatherImagesPath/sun.svg";
+  static const String dailyDayWind = "$_weatherImagesPath/Day Wind.svg";
+  static const String dailyDayStorm = "$_weatherImagesPath/Day Storm.svg";
+  static const String dailyDaySnow = "$_weatherImagesPath/Day Snow.svg";
+  static const String dailyDayRain = "$_weatherImagesPath/Day Rain.svg";
+  static const String dailyDayCloud = "$_weatherImagesPath/Day Cloud.svg";
 }
 
 class AppLottie {

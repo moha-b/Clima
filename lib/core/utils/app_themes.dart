@@ -5,6 +5,8 @@ class AppThemes {
   static ThemeData light = ThemeData(
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.primary,
+    useMaterial3: true,
+    focusColor: AppColors.dayPrimary,
     brightness: Brightness.light,
     bottomNavigationBarTheme: BottomNavigationBarThemes.light,
   );
@@ -12,11 +14,14 @@ class AppThemes {
     scaffoldBackgroundColor: AppColors.primary,
     primaryColor: AppColors.white,
     brightness: Brightness.dark,
+    useMaterial3: true,
+    focusColor: AppColors.nightPrimary,
     bottomNavigationBarTheme: BottomNavigationBarThemes.dark,
   );
   static ThemeData basic = ThemeData(
     scaffoldBackgroundColor: AppColors.basic,
     primaryColor: AppColors.white,
+    useMaterial3: true,
     brightness: Brightness.dark,
     bottomNavigationBarTheme: BottomNavigationBarThemes.dark,
   );

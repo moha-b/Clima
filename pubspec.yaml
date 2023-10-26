@@ -21,6 +21,7 @@ dependencies:
   iconsax:
   shared_preferences:
   equatable:
+  flutter_svg:
   connectivity_plus:
 
 dev_dependencies:
