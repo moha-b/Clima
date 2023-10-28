@@ -14,7 +14,9 @@ import 'bloc/location/location_bloc.dart';
 import 'bloc/nav_bar/nav_bar_bloc.dart';
 
 class LandingScreen extends StatelessWidget {
-  const LandingScreen({super.key});
+  LandingScreen({super.key});
+  double? lat;
+  double? lon;
 
   @override
   Widget build(BuildContext context) {
@@ -41,19 +43,32 @@ class LandingScreen extends StatelessWidget {
           } else if (state is LocationPermissionDeniedState) {
             return const PermissionDeniedWidget();
           } else if (state is FetchCurrentLocationState) {
-            BlocProvider.of<HomeCubit>(context).getTodayWeather(
-              latitude: state.latitude,
-              longitude: state.longitude,
-            );
-            BlocProvider.of<Forecast5DaysCubit>(context).fetchForecast5DaysData(
+            lat = state.latitude;
+            lon = state.longitude;
+            fetchData(
+              context,
               lat: state.latitude,
               lon: state.longitude,
             );
-
             return BlocBuilder<NavBarBloc, NavBarState>(
               builder: (context, state) {
                 return Scaffold(
-                  body: screens.elementAt(state.tabIndex),
+                  body: RefreshIndicator(
+                    onRefresh: () async {
+                      fetchData(
+                        context,
+                        lat: lat,
+                        lon: lon,
+                      );
+                    },
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverFillRemaining(
+                          child: screens.elementAt(state.tabIndex),
+                        )
+                      ],
+                    ),
+                  ),
                   bottomNavigationBar: BottomNavigationBar(
                     onTap: (index) {
                       BlocProvider.of<NavBarBloc>(context)
@@ -74,6 +89,18 @@ class LandingScreen extends StatelessWidget {
           }
         },
       ),
+    );
+  }
+
+  void fetchData(BuildContext context,
+      {required double? lat, required double? lon}) async {
+    BlocProvider.of<Forecast5DaysCubit>(context).fetchForecast5DaysData(
+      lat: lat,
+      lon: lon,
+    );
+    BlocProvider.of<HomeCubit>(context).getTodayWeather(
+      latitude: lat,
+      longitude: lon,
     );
   }
 }

@@ -16,33 +16,33 @@ class DailyWeatherTheme {
 
 final Map<String, DailyWeatherTheme> dailyWeatherThemes = {
   'Clear': DailyWeatherTheme(
-    dayImage: AppImages.dailyDay,
-    nightImage: AppImages.dailyNight,
+    dayImage: AppLottie.dailyDay,
+    nightImage: AppLottie.dailyNight,
     textColor: AppColors.clear,
   ),
   'Clouds': DailyWeatherTheme(
-    dayImage: AppImages.dailyDayCloud,
-    nightImage: AppImages.dailyNightCloud,
+    dayImage: AppLottie.dailyDayCloud,
+    nightImage: AppLottie.dailyNightCloud,
     textColor: AppColors.cloud,
   ),
   'Rain': DailyWeatherTheme(
-    dayImage: AppImages.dailyDayRain,
-    nightImage: AppImages.dailyNightRain,
+    dayImage: AppLottie.dailyDayRain,
+    nightImage: AppLottie.dailyNightRain,
     textColor: AppColors.rain,
   ),
   'Snow': DailyWeatherTheme(
-    dayImage: AppImages.dailyDaySnow,
-    nightImage: AppImages.dailyNightSnow,
+    dayImage: AppLottie.dailyDaySnow,
+    nightImage: AppLottie.dailyNightSnow,
     textColor: AppColors.snow,
   ),
   'Storm': DailyWeatherTheme(
-    dayImage: AppImages.dailyDayStorm,
-    nightImage: AppImages.dailyNightStorm,
+    dayImage: AppLottie.dailyStorm,
+    nightImage: AppLottie.dailyStorm,
     textColor: AppColors.thunderstorm,
   ),
   'Wind': DailyWeatherTheme(
-    dayImage: AppImages.dailyDayWind,
-    nightImage: AppImages.dailyNightWind,
+    dayImage: AppLottie.dailyWind,
+    nightImage: AppLottie.dailyWind,
     textColor: AppColors.wind,
   ),
 };

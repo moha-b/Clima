@@ -27,11 +27,15 @@ class _PlayLottieState extends State<PlayLottie> with TickerProviderStateMixin {
         if (status == AnimationStatus.completed) {
           // When animation completes, reverse it after a delay
           Future.delayed(const Duration(seconds: 2), () {
-            _controller.reverse();
+            if (mounted) {
+              _controller.reverse();
+            }
           });
         } else if (status == AnimationStatus.dismissed) {
           // When animation is reversed completely, play it again
-          _controller.forward();
+          if (mounted) {
+            _controller.forward();
+          }
         }
       });
     }
@@ -41,11 +45,15 @@ class _PlayLottieState extends State<PlayLottie> with TickerProviderStateMixin {
         if (status == AnimationStatus.completed) {
           // When animation completes, reverse it after a delay
           Future.delayed(const Duration(seconds: 2), () {
-            _controller.repeat();
+            if (mounted) {
+              _controller.repeat();
+            }
           });
         } else if (status == AnimationStatus.dismissed) {
           // When animation is reversed completely, play it again
-          _controller.forward();
+          if (mounted) {
+            _controller.forward();
+          }
         }
       });
     }

@@ -7,6 +7,7 @@ class AppThemes {
     primaryColor: AppColors.primary,
     useMaterial3: true,
     focusColor: AppColors.dayPrimary,
+    cardColor: AppColors.dayBorderPrimary,
     brightness: Brightness.light,
     bottomNavigationBarTheme: BottomNavigationBarThemes.light,
   );
@@ -15,6 +16,7 @@ class AppThemes {
     primaryColor: AppColors.white,
     brightness: Brightness.dark,
     useMaterial3: true,
+    cardColor: AppColors.nightBorderPrimary,
     focusColor: AppColors.nightPrimary,
     bottomNavigationBarTheme: BottomNavigationBarThemes.dark,
   );

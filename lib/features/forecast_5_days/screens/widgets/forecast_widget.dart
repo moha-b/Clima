@@ -1,6 +1,6 @@
 import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../data/models/daily_forecast_model.dart';
 
@@ -20,18 +20,20 @@ class ForecastWidget extends StatelessWidget {
           (index) {
             return Expanded(
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+                margin: const EdgeInsets.all(6),
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: Theme.of(context).focusColor,
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0xffe7e7e7)),
+                  border: Border.all(color: Theme.of(context).cardColor),
                 ),
                 child: Row(
                   children: [
                     Flexible(
-                      child: SvgPicture.asset(forecast[index].image,
-                          fit: BoxFit.contain),
+                      child: RepaintBoundary(
+                        child: Lottie.asset(forecast[index].image,
+                            fit: BoxFit.contain),
+                      ),
                     ),
                     const SizedBox(width: 8),
                     Flexible(
@@ -70,8 +72,13 @@ class ForecastWidget extends StatelessWidget {
                             forecast[index].temperature,
                             style: AppTypography.bold28(),
                           ),
-                          Text(
-                            forecast[index].humidity,
+                          Flexible(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                forecast[index].humidity,
+                              ),
+                            ),
                           ),
                         ],
                       ),

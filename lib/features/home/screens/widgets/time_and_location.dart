@@ -14,11 +14,21 @@ class TimeAndLocation extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          date!,
-          style: AppTypography.medium18(
-            color: AppColors.secondary,
-          ),
+        SizedBox(height: AppDimensions.height! * 0.021),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              date!,
+              style: AppTypography.medium18(
+                color: AppColors.secondary,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Iconsax.location),
+            ),
+          ],
         ),
         Flexible(
           child: Text(
