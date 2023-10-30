@@ -1,8 +1,9 @@
 import 'package:clima/core/services/get_it_service.dart';
-import 'package:clima/features/forecast_5_days/cubit/forecast_5_days_cubit.dart';
-import 'package:clima/features/forecast_5_days/data/repo/forecast_5_days_repo.dart';
+import 'package:clima/features/daily_forecast/cubit/daily_forecast_cubit.dart';
+import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/data/repo/home_repo.dart';
+import 'package:clima/features/hourly_forecast/cubit/hourly_forecast_cubit.dart';
 import 'package:clima/features/landing_page/widgets/bottom_nav_bar_list.dart';
 import 'package:clima/features/landing_page/widgets/permission_denied_widget.dart';
 import 'package:clima/features/landing_page/widgets/screens.dart';
@@ -33,7 +34,11 @@ class LandingScreen extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              Forecast5DaysCubit(getIt.get<Forecast5DaysRepository>()),
+              DailyForecastCubit(getIt.get<DailyForecastRepository>()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              HourlyForecastCubit(getIt.get<DailyForecastRepository>()),
         ),
       ],
       child: BlocBuilder<LocationBloc, LocationState>(
@@ -61,12 +66,14 @@ class LandingScreen extends StatelessWidget {
                         lon: lon,
                       );
                     },
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverFillRemaining(
-                          child: screens.elementAt(state.tabIndex),
-                        )
-                      ],
+                    child: SafeArea(
+                      child: CustomScrollView(
+                        slivers: [
+                          SliverFillRemaining(
+                            child: screens.elementAt(state.tabIndex),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   bottomNavigationBar: BottomNavigationBar(
@@ -94,7 +101,11 @@ class LandingScreen extends StatelessWidget {
 
   void fetchData(BuildContext context,
       {required double? lat, required double? lon}) async {
-    BlocProvider.of<Forecast5DaysCubit>(context).fetchForecast5DaysData(
+    BlocProvider.of<DailyForecastCubit>(context).fetchForecast5DaysData(
+      lat: lat,
+      lon: lon,
+    );
+    BlocProvider.of<HourlyForecastCubit>(context).fetchForecast5DaysData(
       lat: lat,
       lon: lon,
     );

@@ -18,34 +18,32 @@ class HomeWidget extends StatelessWidget {
   final Color textColor;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: TimeAndLocation(
-                date: time,
-                cityName: cityName,
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: TimeAndLocation(
+              date: time,
+              cityName: cityName,
             ),
-            Expanded(
-              flex: 2,
-              child: WeatherImage(
-                image: image,
-              ),
+          ),
+          Expanded(
+            flex: 2,
+            child: WeatherImage(
+              image: image,
             ),
-            Expanded(
-              flex: 2,
-              child: WeatherStatus(
-                temperature: temperature,
-                weatherState: weatherState,
-                textColor: textColor,
-              ),
+          ),
+          Expanded(
+            flex: 2,
+            child: WeatherStatus(
+              temperature: temperature,
+              weatherState: weatherState,
+              textColor: textColor,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
