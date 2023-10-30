@@ -23,6 +23,7 @@ dependencies:
   equatable:
   flutter_svg:
   connectivity_plus:
+  google_maps_flutter:
 
 dev_dependencies:
   flutter_test:
