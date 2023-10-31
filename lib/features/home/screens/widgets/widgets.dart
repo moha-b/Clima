@@ -1,6 +1,7 @@
 import 'package:clima/core/animations/play_lottie.dart';
 import 'package:clima/core/constant/constants.dart';
 import 'package:clima/core/utils/utils.dart';
+import 'package:clima/features/map/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 

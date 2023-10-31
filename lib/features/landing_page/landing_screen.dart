@@ -11,13 +11,12 @@ import 'package:clima/features/landing_page/widgets/waiting_permission_widget.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../core/constant/constants.dart';
 import 'bloc/location/location_bloc.dart';
 import 'bloc/nav_bar/nav_bar_bloc.dart';
 
 class LandingScreen extends StatelessWidget {
-  LandingScreen({super.key});
-  double? lat;
-  double? lon;
+  const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -25,7 +25,12 @@ class TimeAndLocation extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Map()),
+                );
+              },
               icon: const Icon(Iconsax.location),
             ),
           ],
