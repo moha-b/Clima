@@ -1,4 +1,5 @@
 import 'package:clima/core/helper/lotte_cach_helper.dart';
+import 'package:clima/core/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,6 +54,7 @@ String mapWeatherState(String apiWeatherMain) {
 
 initialization() {
   WidgetsFlutterBinding.ensureInitialized();
+  NotificationService.initialize();
   setup();
   Bloc.observer = MyBlocObserver();
   LottieCache.cache();

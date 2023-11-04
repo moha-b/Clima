@@ -1,4 +1,4 @@
-package com.example.elemental
+package com.example.clima
 
 import io.flutter.embedding.android.FlutterActivity
 

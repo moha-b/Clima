@@ -19,7 +19,8 @@ dependencies:
   get_it:
   lottie:
   iconsax:
-  shared_preferences:
+  flutter_local_notifications:
+  path_provider:
   equatable:
   flutter_svg:
   connectivity_plus:
@@ -39,7 +40,18 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/weather/
+    - assets/images/weather/Day Clouds.webp
+    - assets/images/weather/Day Rain.webp
+    - assets/images/weather/Day Snow.webp
+    - assets/images/weather/Day Storm.webp
+    - assets/images/weather/Day Sun.webp
+    - assets/images/weather/Day Wind.webp
+    - assets/images/weather/Night Clouds.webp
+    - assets/images/weather/Night Rain.webp
+    - assets/images/weather/Night Snow.webp
+    - assets/images/weather/Night Storm.webp
+    - assets/images/weather/Night Moon.webp
+    - assets/images/weather/Night Wind.webp
     - assets/lottie/
   #   - images/a_dot_ham.jpeg
 

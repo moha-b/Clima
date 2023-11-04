@@ -1,5 +1,6 @@
 import 'package:clima/app/bloc/theme/theme_cubit.dart';
 import 'package:clima/core/constant/constants.dart';
+import 'package:clima/core/services/notification_service.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,12 @@ class HomeScreen extends StatelessWidget {
         // TODO: implement listener
         if (state is HomeSuccessState) {
           BlocProvider.of<ThemeCubit>(context).switchTheme(isNight);
+          NotificationService.scheduleSunriseSunsetNotifications(
+              title: "Today's weather in ${state.weatherData.cityName}",
+              body: "${state.temperature} • ${state.weatherData.weatherState}",
+              sunriseTime: state.weatherData.sys.sunrise,
+              sunsetTime: state.weatherData.sys.sunset,
+              imageAssetPath: state.weatherImage);
         }
       },
       builder: (context, state) {
