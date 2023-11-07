@@ -1,7 +1,7 @@
 class WeatherModel {
-  final int time;
+  final num time;
   final String weatherState;
-  final double temperature;
+  final num temperature;
   final String cityName;
   final Sys sys;
 
@@ -25,8 +25,8 @@ class WeatherModel {
 }
 
 class Sys {
-  final int sunrise;
-  final int sunset;
+  final num sunrise;
+  final num sunset;
 
   Sys({
     required this.sunrise,

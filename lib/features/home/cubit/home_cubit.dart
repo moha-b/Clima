@@ -24,14 +24,16 @@ class HomeCubit extends Cubit<HomeState> {
         emit(HomeErrorState(error: error.message));
       }, (weather) {
         /// [isNight] is a global value => lib/core/constant/constants.dart
-        isNight = isNightTime(weather.sys.sunrise, weather.sys.sunset);
+        isNight = isNightTime(
+            weather.sys.sunrise.toInt(), weather.sys.sunset.toInt());
         WeatherTheme? theme =
             weatherThemes[mapWeatherState(weather.weatherState)];
         emit(
           HomeSuccessState(
             weatherData: weather,
-            todayDate: convertTimeToReadableDate(weather.time),
-            temperature: convertTemperatureToCelsius(weather.temperature),
+            todayDate: convertTimeToReadableDate(weather.time.toInt()),
+            temperature:
+                convertTemperatureToCelsius(weather.temperature.toDouble()),
             weatherImage: isNight ? theme!.nightImage : theme!.dayImage,
             textColor: theme.textColor,
           ),

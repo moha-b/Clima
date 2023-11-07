@@ -19,43 +19,6 @@ class NotificationService {
     tz.initializeTimeZones();
   }
 
-  static Future<void> showNotification({
-    int id = 0,
-    String title = 'Today weather',
-    String body = 'Notification Body',
-    String imageAssetPath = 'app_icon',
-  }) async {
-    final tempDir = await getTemporaryDirectory();
-    final imagePath = '${tempDir.path}/image.webp';
-
-    // Copy the image from assets to the temporary directory
-    ByteData data = await rootBundle.load(imageAssetPath);
-    List<int> bytes = data.buffer.asUint8List();
-    await File(imagePath).writeAsBytes(bytes);
-
-    AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
-      'your_channel_id',
-      'your_channel_name',
-      importance: Importance.max,
-      largeIcon: FilePathAndroidBitmap(imagePath),
-      playSound: true,
-      sound: const RawResourceAndroidNotificationSound('bubble'),
-      priority: Priority.high,
-      colorized: true,
-    );
-
-    NotificationDetails platformChannelSpecifics =
-        NotificationDetails(android: androidPlatformChannelSpecifics);
-
-    await _flutterLocalNotificationsPlugin.show(
-      id,
-      title,
-      body,
-      platformChannelSpecifics,
-    );
-  }
-
   static Future<void> scheduleSunriseSunsetNotifications({
     required String title,
     required String body,
@@ -72,7 +35,12 @@ class NotificationService {
     await File(imagePath).writeAsBytes(bytes);
 
     DateTime sunrise = DateTime.fromMillisecondsSinceEpoch(sunriseTime * 1000);
+    // Add 2 minutes to the sunrise time
+    sunrise = sunrise.add(const Duration(minutes: 2));
+
     DateTime sunset = DateTime.fromMillisecondsSinceEpoch(sunsetTime * 1000);
+    // Add 2 minutes to the sunrise time
+    sunset = sunset.add(const Duration(minutes: 2));
 
     // Schedule sunrise notification
     await _flutterLocalNotificationsPlugin.zonedSchedule(
@@ -86,6 +54,8 @@ class NotificationService {
           'Sunrise Channel',
           importance: Importance.max,
           largeIcon: FilePathAndroidBitmap(imagePath),
+          playSound: true,
+          sound: const RawResourceAndroidNotificationSound('bubble'),
           priority: Priority.high,
           colorized: true,
         ),
@@ -109,6 +79,8 @@ class NotificationService {
           importance: Importance.max,
           largeIcon: FilePathAndroidBitmap(imagePath),
           priority: Priority.high,
+          playSound: true,
+          sound: const RawResourceAndroidNotificationSound('bubble'),
           colorized: true,
         ),
       ),

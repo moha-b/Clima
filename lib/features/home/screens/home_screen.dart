@@ -19,8 +19,8 @@ class HomeScreen extends StatelessWidget {
           NotificationService.scheduleSunriseSunsetNotifications(
               title: "Today's weather in ${state.weatherData.cityName}",
               body: "${state.temperature} • ${state.weatherData.weatherState}",
-              sunriseTime: state.weatherData.sys.sunrise,
-              sunsetTime: state.weatherData.sys.sunset,
+              sunriseTime: state.weatherData.sys.sunrise.toInt(),
+              sunsetTime: state.weatherData.sys.sunset.toInt(),
               imageAssetPath: state.weatherImage);
         }
       },
