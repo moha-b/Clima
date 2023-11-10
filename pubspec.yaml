@@ -54,7 +54,6 @@ flutter:
     - assets/images/weather/Night Moon.webp
     - assets/images/weather/Night Wind.webp
     - assets/lottie/
-  #   - images/a_dot_ham.jpeg
 
   # To add custom fonts to your application, add a fonts section here,
   # example:
