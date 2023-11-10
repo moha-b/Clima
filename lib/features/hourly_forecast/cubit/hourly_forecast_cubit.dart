@@ -48,6 +48,7 @@ class HourlyForecastCubit extends Cubit<HourlyForecastState> {
           data: item.main,
           main: main,
           image: isNight ? theme!.nightImage : theme!.dayImage,
+          isExpanded: forecast.list[0] == item ? true : false,
         ));
       }
     }

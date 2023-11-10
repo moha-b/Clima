@@ -21,6 +21,7 @@ dependencies:
   iconsax:
   flutter_local_notifications:
   path_provider:
+  fl_chart: 
   equatable:
   flutter_svg:
   connectivity_plus:

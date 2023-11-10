@@ -8,14 +8,15 @@ class HourlyForecast {
   String main;
   String image;
   MainWeatherData data;
+  bool isExpanded;
 
-  HourlyForecast({
-    required this.date,
-    required this.humidity,
-    required this.temperature,
-    required this.description,
-    required this.main,
-    required this.image,
-    required this.data,
-  });
+  HourlyForecast(
+      {required this.date,
+      required this.humidity,
+      required this.temperature,
+      required this.description,
+      required this.main,
+      required this.image,
+      required this.data,
+      required this.isExpanded});
 }
