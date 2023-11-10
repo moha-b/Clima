@@ -71,7 +71,10 @@ This will launch the Flutter app, allowing you to utilize Google Maps and OpenWe
 - Responsive Design: Enjoy consistent user experience across various devices and screen sizes, including smartphones and tablets.
 
 ## Preview 📱
-![preview](assets/images/preview.mp4)
+
+https://github.com/moha-b/Clima/assets/73842931/c0a0ccd2-671c-4f00-9b5f-61fbdafba621
+
+
 
 ## Techniques 🛠️
 - Minimum SDK level 21
