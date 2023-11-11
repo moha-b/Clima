@@ -1,5 +1,5 @@
 import 'package:clima/core/error/error_handling.dart';
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 
 import '../model/weather_model.dart';
 

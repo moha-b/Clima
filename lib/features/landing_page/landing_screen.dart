@@ -11,7 +11,7 @@ import 'package:clima/features/landing_page/widgets/waiting_permission_widget.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../core/constant/constants.dart';
+import '../../core/global/variables.dart';
 import 'bloc/location/location_bloc.dart';
 import 'bloc/nav_bar/nav_bar_bloc.dart';
 
@@ -47,8 +47,8 @@ class LandingScreen extends StatelessWidget {
           } else if (state is LocationPermissionDeniedState) {
             return const PermissionDeniedWidget();
           } else if (state is FetchCurrentLocationState) {
-            lat = state.latitude;
-            lon = state.longitude;
+            GlobalVariablesState.lat = state.latitude;
+            GlobalVariablesState.lon = state.longitude;
             fetchData(
               context,
               lat: state.latitude,
@@ -61,8 +61,8 @@ class LandingScreen extends StatelessWidget {
                     onRefresh: () async {
                       fetchData(
                         context,
-                        lat: lat,
-                        lon: lon,
+                        lat: GlobalVariablesState.lat,
+                        lon: GlobalVariablesState.lon,
                       );
                     },
                     child: SafeArea(

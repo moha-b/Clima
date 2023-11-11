@@ -1,4 +1,5 @@
-import 'package:clima/core/constant/constants.dart';
+import 'package:clima/core/global/enums.dart';
+import 'package:clima/core/global/variables.dart';
 import 'package:clima/features/daily_forecast/data/models/daily_weather_theme.dart';
 import 'package:clima/features/daily_forecast/data/models/forecast_5_days_model.dart';
 import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo.dart';
@@ -26,7 +27,7 @@ class DailyForecastCubit extends Cubit<DailyForecastState> {
   List<DailyForecast> _parseWeatherData(Forecast5DaysModel forecast) {
     List<DailyForecast> dailyForecasts = [];
     String currentDate = "";
-    DailyWeatherTheme? theme;
+    DailyWeatherTheme theme;
 
     for (var item in forecast.list) {
       String date = item.date;
@@ -34,7 +35,8 @@ class DailyForecastCubit extends Cubit<DailyForecastState> {
       String temperature = convertTemperatureToCelsius(item.main.temp);
       String description = item.weather[0].description;
       String main = item.weather[0].main;
-      theme = dailyWeatherThemes[mapWeatherState(item.weather[0].main)];
+      theme = DailyWeatherTheme.fromWeatherState(
+          item.weather[0].main.mapToWeatherState());
       if (date.substring(0, 10) != currentDate) {
         date = item.date.substring(0, 10);
         dailyForecasts.add(DailyForecast(
@@ -43,7 +45,8 @@ class DailyForecastCubit extends Cubit<DailyForecastState> {
           temperature: temperature,
           description: description,
           main: main,
-          image: isNight ? theme!.nightImage : theme!.dayImage,
+          image:
+              GlobalVariablesState.isNight ? theme.nightImage : theme.dayImage,
           textColor: theme.textColor,
         ));
         currentDate = date;

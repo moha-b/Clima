@@ -1,7 +1,8 @@
+import 'package:clima/core/global/enums.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/constant/constants.dart';
+import '../../../core/global/variables.dart';
 import '../../../core/helper/functions.dart';
 import '../../daily_forecast/data/models/daily_weather_theme.dart';
 import '../../daily_forecast/data/models/forecast_5_days_model.dart';
@@ -37,8 +38,8 @@ class HourlyForecastCubit extends Cubit<HourlyForecastState> {
         String temperature = convertTemperatureToCelsius(item.main.temp);
         String description = item.weather[0].description;
         String main = item.weather[0].main;
-        DailyWeatherTheme? theme =
-            dailyWeatherThemes[mapWeatherState(item.weather[0].main)];
+        DailyWeatherTheme theme = DailyWeatherTheme.fromWeatherState(
+            item.weather[0].main.mapToWeatherState());
 
         hourlyForecasts.add(HourlyForecast(
           date: date.substring(11),
@@ -47,7 +48,8 @@ class HourlyForecastCubit extends Cubit<HourlyForecastState> {
           description: description,
           data: item.main,
           main: main,
-          image: isNight ? theme!.nightImage : theme!.dayImage,
+          image:
+              GlobalVariablesState.isNight ? theme.nightImage : theme.dayImage,
           isExpanded: forecast.list[0] == item ? true : false,
         ));
       }

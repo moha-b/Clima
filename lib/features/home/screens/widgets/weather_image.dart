@@ -47,7 +47,7 @@ class _WeatherImageState extends State<WeatherImage>
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              gradient: isNight
+              gradient: GlobalVariablesState.isNight
                   ? const RadialGradient(
                       colors: [
                         Color(0xFFE2E0EF),

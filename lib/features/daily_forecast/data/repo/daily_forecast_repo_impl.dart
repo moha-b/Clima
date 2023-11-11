@@ -1,9 +1,9 @@
 import 'package:clima/core/error/error_handling.dart';
 import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo.dart';
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/constant/apis.dart';
+import '../../../../core/api/end_points.dart';
 import '../../../../core/services/api_service.dart';
 import '../models/forecast_5_days_model.dart';
 

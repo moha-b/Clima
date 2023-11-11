@@ -18,7 +18,7 @@ class WeatherStatus extends StatelessWidget {
         GradientText(
           temperature!,
           style: AppTypography.bold144(),
-          gradient: isNight
+          gradient: GlobalVariablesState.isNight
               ? const LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,

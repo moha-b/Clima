@@ -1,4 +1,4 @@
-import 'package:clima/core/constant/apis.dart';
+import 'package:clima/core/api/keys.dart';
 import 'package:dio/dio.dart';
 
 class ApiService {
@@ -14,11 +14,7 @@ class ApiService {
     required Map<String, dynamic> parameters,
   }) async {
     parameters['appid'] = Api.key;
-    try {
-      Response response = await _dio.get(endPoint, queryParameters: parameters);
-      return response.data;
-    } catch (e) {
-      throw Exception(e);
-    }
+    Response response = await _dio.get(endPoint, queryParameters: parameters);
+    return response.data;
   }
 }

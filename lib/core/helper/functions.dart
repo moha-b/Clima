@@ -25,33 +25,6 @@ bool isNightTime(int sunriseTimestamp, int sunsetTimestamp) {
       currentTimestamp > sunsetTimestamp;
 }
 
-String mapWeatherState(String apiWeatherMain) {
-  switch (apiWeatherMain.toLowerCase()) {
-    case 'thunderstorm':
-      return 'Storm';
-    case 'drizzle':
-    case 'rain':
-      return 'Rain';
-    case 'snow':
-      return 'Snow';
-    case 'mist':
-    case 'smoke':
-    case 'haze':
-    case 'dust':
-    case 'sand':
-    case 'ash':
-    case 'squall':
-    case 'tornado':
-      return 'Wind';
-    case 'clear':
-      return 'Clear';
-    case 'clouds':
-      return 'Clouds';
-    default:
-      return 'Unknown';
-  }
-}
-
 initialization() {
   WidgetsFlutterBinding.ensureInitialized();
   NotificationService.initialize();

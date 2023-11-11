@@ -35,11 +35,15 @@ class TimeAndLocation extends StatelessWidget {
             ),
           ],
         ),
-        Flexible(
-          child: Text(
-            cityName!,
-            style: AppTypography.bold48(color: Theme.of(context).primaryColor),
-            overflow: TextOverflow.ellipsis,
+        Expanded(
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              cityName!,
+              style:
+                  AppTypography.bold48(color: Theme.of(context).primaryColor),
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
       ],
