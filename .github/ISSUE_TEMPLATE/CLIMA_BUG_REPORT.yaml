@@ -1,32 +1,35 @@
-name: 🐞 Bug
+name: 🐞 Bug Report
 description: File a bug report
-title: "[Bug]: <title>"
-labels: ["bug", "triage"]
+title: "[Bug]: <Title>"
+labels: ["feature", "triage"]
+assignees: ["moha-b"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
   - type: textarea
-    id: description
+    id: bug-description
     attributes:
-      label: Description
-      description: Describe the issue in detail.
-      placeholder: Describe the problem, steps to reproduce, and expected behavior.
+      label: Description of the bug
+      description: Give us a brief description of what happened and what should have happened.
+      placeholder: |
+        Tell us what you see!
     validations:
       required: true
+
   - type: textarea
-    id: steps
+    id: steps-to-reproduce
     attributes:
-      label: Steps to Reproduce
-      description: Outline the steps to reproduce the issue.
-      placeholder: List the steps to make the issue occur.
+      label: Steps To Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
     validations:
       required: true
-  - type: file
-    id: image
+
+  - type: textarea
+    id: additional-information
     attributes:
-      label: Attach Image
-      description: Attach a screenshot or image that helps illustrate the issue.
-      validations:
-        required: false
+      label: Additional Information
+      description: |
+        Provide any additional information such as logs, screenshots, likes, scenarios in which the bug occurs so that it facilitates resolving the issue.
