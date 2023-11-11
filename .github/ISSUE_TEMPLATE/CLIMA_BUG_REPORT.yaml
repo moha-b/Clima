@@ -1,0 +1,32 @@
+name: 🐞 Bug
+description: File a bug report
+title: "[Bug]: <title>"
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the issue in detail.
+      placeholder: Describe the problem, steps to reproduce, and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Outline the steps to reproduce the issue.
+      placeholder: List the steps to make the issue occur.
+    validations:
+      required: true
+  - type: file
+    id: image
+    attributes:
+      label: Attach Image
+      description: Attach a screenshot or image that helps illustrate the issue.
+      validations:
+        required: false
