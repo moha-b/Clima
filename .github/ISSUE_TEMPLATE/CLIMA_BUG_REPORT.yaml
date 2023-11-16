@@ -1,7 +1,7 @@
 name: 🐞 Bug Report
-description: File a bug report
-title: "[Bug]: <Title>"
-labels: ["feature", "triage"]
+description: Issue something wrong
+title: "[BUG]: <Title>"
+labels: ["bug", "triage"]
 assignees: ["moha-b"]
 body:
   - type: textarea

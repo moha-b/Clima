@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
                     body: Center(child: CircularProgressIndicator()),
                   );
                 } else if (state is ConnectedSuccess) {
-                  return LandingScreen();
+                  return const LandingScreen();
                 } else {
                   return const Scaffold(
                     body: StateWidget(

@@ -1,6 +1,6 @@
 name: 🌟 Feature Request
 description: Submit a feature request
-title: "[Feature]: <title>"
+title: "[FEATURE]: <title>"
 labels: ["feature", "triage"]
 assignees: ["moha-b"]
 body:
