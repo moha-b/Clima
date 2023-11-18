@@ -15,31 +15,7 @@ class WeatherStatus extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GradientText(
-          temperature!,
-          style: AppTypography.bold144(),
-          gradient: GlobalVariablesState.isNight
-              ? const LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  stops: [
-                      0.3,
-                      1
-                    ],
-                  colors: [
-                      AppColors.white,
-                      AppColors.primary,
-                    ])
-              : const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.5, 1.0],
-                  colors: [
-                    AppColors.primary,
-                    AppColors.white,
-                  ],
-                ),
-        ),
+        TemperatureText(temperature: temperature),
         Text(weatherState!,
             style: AppTypography.bold24(
               color: textColor,

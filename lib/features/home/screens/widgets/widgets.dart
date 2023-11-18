@@ -5,9 +5,10 @@ import 'package:clima/features/map/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-part 'gradient_text.dart';
+import '../../../../core/common/temperature_text.dart';
+
+part '../../../../core/common/weather_image.dart';
 part 'home_widget.dart';
 part 'state_widget.dart';
 part 'time_and_location.dart';
-part 'weather_image.dart';
 part 'weather_status.dart';

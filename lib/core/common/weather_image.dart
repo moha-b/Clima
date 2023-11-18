@@ -1,4 +1,4 @@
-part of 'widgets.dart';
+part of '../../features/home/screens/widgets/widgets.dart';
 
 class WeatherImage extends StatefulWidget {
   final String? image;
