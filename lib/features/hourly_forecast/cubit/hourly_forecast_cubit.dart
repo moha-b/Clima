@@ -1,4 +1,5 @@
 import 'package:clima/core/global/enums.dart';
+import 'package:clima/core/helper/converter_helper.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,15 +35,15 @@ class HourlyForecastCubit extends Cubit<HourlyForecastState> {
 
       // Check if the item's date matches the current day
       if (date.substring(0, 10) == currentDay) {
-        String humidity = "humidity ${item.main.humidity}%";
+        String humidity = "${item.main.humidity}%";
         String temperature = convertTemperatureToCelsius(item.main.temp);
         String description = item.weather[0].description;
         String main = item.weather[0].main;
         DailyWeatherTheme theme = DailyWeatherTheme.fromWeatherState(
             item.weather[0].main.mapToWeatherState());
-
         hourlyForecasts.add(HourlyForecast(
-          date: date.substring(11),
+          hours: DateFormatter.formatHours(date),
+          day: DateFormatter.formatDay(date),
           humidity: humidity,
           temperature: temperature,
           description: description,

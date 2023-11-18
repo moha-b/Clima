@@ -10,6 +10,7 @@ class AppThemes {
     cardColor: AppColors.dayBorderPrimary,
     brightness: Brightness.light,
     bottomNavigationBarTheme: BottomNavigationBarThemes.light,
+    appBarTheme: AppBarThemes.basic,
   );
   static ThemeData dark = ThemeData(
     scaffoldBackgroundColor: AppColors.primary,
@@ -19,6 +20,7 @@ class AppThemes {
     cardColor: AppColors.nightBorderPrimary,
     focusColor: AppColors.nightPrimary,
     bottomNavigationBarTheme: BottomNavigationBarThemes.dark,
+    appBarTheme: AppBarThemes.basic,
   );
   static ThemeData basic = ThemeData(
     scaffoldBackgroundColor: AppColors.basic,
@@ -41,5 +43,12 @@ class BottomNavigationBarThemes {
     elevation: 0,
     selectedItemColor: AppColors.white,
     unselectedItemColor: AppColors.secondary,
+  );
+}
+
+class AppBarThemes {
+  static AppBarTheme basic = const AppBarTheme(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
   );
 }
