@@ -5,6 +5,7 @@ import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/data/repo/home_repo.dart';
 import 'package:clima/features/hourly_forecast/cubit/hourly_forecast_cubit.dart';
 import 'package:clima/features/landing_page/widgets/bottom_nav_bar_list.dart';
+import 'package:clima/features/landing_page/widgets/location_service_disabled.dart';
 import 'package:clima/features/landing_page/widgets/permission_denied_widget.dart';
 import 'package:clima/features/landing_page/widgets/screens.dart';
 import 'package:clima/features/landing_page/widgets/waiting_permission_widget.dart';
@@ -48,6 +49,8 @@ class LandingScreen extends StatelessWidget {
             return const WaitingPermissionWidget();
           } else if (state is LocationPermissionDeniedState) {
             return const PermissionDeniedWidget();
+          } else if (state is LocationServiceDisabledState) {
+            return const LocationServiceDisabledWidget();
           } else if (state is FetchCurrentLocationState) {
             return BlocBuilder<NavBarBloc, NavBarState>(
               builder: (context, state) {

@@ -8,3 +8,5 @@ abstract class LocationEvent extends Equatable {
 class GetLocationEvent extends LocationEvent {}
 
 class RetryPermissionEvent extends LocationEvent {}
+
+class EnableLocationServiceEvent extends LocationEvent {}

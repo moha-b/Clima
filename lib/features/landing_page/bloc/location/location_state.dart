@@ -5,8 +5,6 @@ abstract class LocationState extends Equatable {
   List<Object> get props => [];
 }
 
-class LocationInitial extends LocationState {}
-
 class AskForLocationPermissionState extends LocationState {}
 
 class FetchCurrentLocationState extends LocationState {
@@ -20,3 +18,5 @@ class FetchCurrentLocationState extends LocationState {
 }
 
 class LocationPermissionDeniedState extends LocationState {}
+
+class LocationServiceDisabledState extends LocationState {}
