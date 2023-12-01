@@ -96,12 +96,20 @@ class LocationHelper {
   }
 
   /// Opens the application settings.
-  Future<bool> openAppSettings() async {
+  Future<bool> isAppSettingsOpens() async {
     return await Geolocator.openAppSettings();
   }
 
-  Future<bool> openLocationSettings() async {
+  Future<bool> isLocationSettingsOpens() async {
     return await Geolocator.openLocationSettings();
+  }
+
+  Future<void> openAppSettings() async {
+    await Geolocator.openAppSettings();
+  }
+
+  Future<void> openLocationSettings() async {
+    await Geolocator.openLocationSettings();
   }
 }
 

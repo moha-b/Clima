@@ -7,9 +7,10 @@ part 'location_state.dart';
 
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   LocationBloc() : super(AskForLocationPermissionState()) {
+    //  get current location
     on<GetLocationEvent>(_getLocation);
-    // TODO: request permission again
-
+    // re-request permission
+    on<RetryPermissionEvent>(_reRequestPermission);
     // enable location service
     on<EnableLocationServiceEvent>(_enableLocationService);
   }
@@ -33,12 +34,25 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     }
   }
 
+  _reRequestPermission(
+      RetryPermissionEvent event, Emitter<LocationState> emit) async {
+    LocationHelper.instance.openAppSettings();
+    bool isAppSettingsOpened =
+        await LocationHelper.instance.isAppSettingsOpens();
+    if (isAppSettingsOpened) {
+      await _getLocation(GetLocationEvent(), emit);
+    } else {
+      emit(LocationPermissionDeniedState());
+    }
+  }
+
   _enableLocationService(
       EnableLocationServiceEvent event, Emitter<LocationState> emit) async {
+    LocationHelper.instance.openLocationSettings();
     bool isSettingsOpened =
-        await LocationHelper.instance.openLocationSettings();
+        await LocationHelper.instance.isLocationSettingsOpens();
     if (isSettingsOpened) {
-      _getLocation(GetLocationEvent(), emit);
+      await _getLocation(GetLocationEvent(), emit);
     } else {
       emit(LocationServiceDisabledState());
     }
