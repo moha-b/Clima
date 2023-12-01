@@ -16,9 +16,7 @@ class PermissionDeniedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: PrimaryButton(
-        onTap: () {
-          context.read<LocationBloc>().add(RetryPermissionEvent());
-        },
+        onTap: () => context.read<LocationBloc>().add(RetryPermissionEvent()),
         isBorder: true,
         color: AppColors.white,
         text: "Location Permission",

@@ -3,19 +3,9 @@ part of 'widgets.dart';
 class HomeWidget extends StatelessWidget {
   const HomeWidget({
     super.key,
-    required this.cityName,
-    required this.time,
-    required this.weatherState,
-    required this.temperature,
-    required this.image,
-    required this.textColor,
+    required this.weather,
   });
-  final String cityName;
-  final String time;
-  final String weatherState;
-  final String temperature;
-  final String image;
-  final Color textColor;
+  final Weather weather;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,22 +15,22 @@ class HomeWidget extends StatelessWidget {
         children: [
           Expanded(
             child: TimeAndLocation(
-              date: time,
-              cityName: cityName,
+              date: weather.date,
+              cityName: weather.cityName,
             ),
           ),
           Expanded(
             flex: 2,
             child: WeatherImage(
-              image: image,
+              image: weather.image,
             ),
           ),
           Expanded(
             flex: 2,
             child: WeatherStatus(
-              temperature: temperature,
-              weatherState: weatherState,
-              textColor: textColor,
+              temperature: weather.temperature,
+              weatherState: weather.weatherState,
+              textColor: weather.textColor,
             ),
           ),
         ],

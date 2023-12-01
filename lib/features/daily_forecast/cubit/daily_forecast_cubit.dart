@@ -1,5 +1,6 @@
 import 'package:clima/core/global/enums.dart';
 import 'package:clima/core/global/variables.dart';
+import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/features/daily_forecast/data/models/forecast_5_days_model.dart';
 import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo.dart';
 import 'package:equatable/equatable.dart';
@@ -14,8 +15,10 @@ part 'daily_forecast_state.dart';
 class DailyForecastCubit extends Cubit<DailyForecastState> {
   DailyForecastCubit(this._repository) : super(DailyForecastInitial());
   final DailyForecastRepository _repository;
-  fetchForecast5DaysData({required double? lat, required double? lon}) async {
-    var result = await _repository.fetchForecast5Days(lat, lon);
+  fetchForecast5DaysData() async {
+    var result = await _repository.fetchForecast5Days(
+        Location.instance.position?.latitude,
+        Location.instance.position?.longitude);
     result.fold(
       (failure) => emit(DailyForecastError(failure.message)),
       (forecast) {
@@ -35,7 +38,7 @@ class DailyForecastCubit extends Cubit<DailyForecastState> {
       String temperature = convertTemperatureToCelsius(item.main.temp);
       String description = item.weather[0].description;
       String main = item.weather[0].main;
-      theme = WeatherTheme.fromWeatherState(
+      theme = WeatherTheme.mapWeatherStateToTheme(
           item.weather[0].main.mapToWeatherState());
       if (date.substring(0, 10) != currentDate) {
         date = item.date.substring(0, 10);

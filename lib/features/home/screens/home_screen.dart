@@ -1,4 +1,6 @@
 import 'package:clima/app/bloc/theme/theme_cubit.dart';
+import 'package:clima/core/common/failure_widget.dart';
+import 'package:clima/core/common/loading_widget.dart';
 import 'package:clima/core/global/variables.dart';
 import 'package:clima/core/services/notification_service.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
@@ -13,34 +15,32 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
-        // TODO: implement listener
         if (state is HomeSuccessState) {
           BlocProvider.of<ThemeCubit>(context)
               .switchTheme(GlobalVariablesState.isNight);
           NotificationService.scheduleSunriseSunsetNotifications(
               title: "Today's weather in ${state.weatherData.cityName}",
-              body: "${state.temperature} • ${state.weatherData.weatherState}",
-              sunriseTime: state.weatherData.sys.sunrise.toInt(),
-              sunsetTime: state.weatherData.sys.sunset.toInt(),
-              imageAssetPath: state.weatherImage);
+              body:
+                  "${state..weatherData.temperature} • ${state.weatherData.weatherState}",
+              sunriseTime: state.sys.sunrise.toInt(),
+              sunsetTime: state.sys.sunset.toInt(),
+              imageAssetPath: state.weatherData.image);
         }
       },
       builder: (context, state) {
         if (state is HomeLoadingState) {
-          return StateWidget(lottie: state.lottie, text: state.text);
+          return const LoadingWidget();
         } else if (state is HomeSuccessState) {
-          return HomeWidget(
-            temperature: state.temperature,
-            time: state.todayDate,
-            weatherState: state.weatherData.weatherState,
-            cityName: state.weatherData.cityName,
-            image: state.weatherImage,
-            textColor: state.textColor,
-          );
+          return HomeWidget(weather: state.weatherData);
         } else if (state is HomeErrorState) {
-          return StateWidget(text: state.error);
+          return FailureWidget(text: state.error);
         } else {
-          return const StateWidget();
+          return const Center(
+            child: Text(
+              "Bankai",
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            ),
+          );
         }
       },
     );

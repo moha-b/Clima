@@ -1,5 +1,6 @@
 import 'package:clima/core/global/enums.dart';
 import 'package:clima/core/helper/converter_helper.dart';
+import 'package:clima/core/helper/location_helper.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,8 +16,10 @@ part 'hourly_forecast_state.dart';
 class HourlyForecastCubit extends Cubit<HourlyForecastState> {
   HourlyForecastCubit(this._repository) : super(HourlyForecastInitial());
   final DailyForecastRepository _repository;
-  fetchForecast5DaysData({required double? lat, required double? lon}) async {
-    var result = await _repository.fetchForecast5Days(lat, lon);
+  fetchForecast5DaysData() async {
+    var result = await _repository.fetchForecast5Days(
+        Location.instance.position?.latitude,
+        Location.instance.position?.longitude);
     result.fold(
       (failure) => emit(HourlyForecastError(failure.message)),
       (forecast) {
