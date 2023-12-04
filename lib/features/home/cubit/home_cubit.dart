@@ -1,6 +1,8 @@
 import 'package:clima/core/global/enums.dart';
 import 'package:clima/core/helper/functions.dart';
+import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/core/utils/app_images.dart';
+import 'package:clima/features/home/data/model/weather.dart';
 import 'package:clima/features/home/data/model/weather_model.dart';
 import 'package:clima/features/home/data/model/weather_theme.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +15,13 @@ part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeRepository repository;
+  var model;
   HomeCubit(this.repository) : super(HomeLoadingState());
 
-  getTodayWeather({
-    required double? latitude,
-    required double? longitude,
-  }) async {
-    final data = await repository.getTodayWeather(latitude, longitude);
+  getTodayWeather() async {
+    final data = await repository.getTodayWeather(
+        Location.instance.position?.latitude,
+        Location.instance.position?.longitude);
     try {
       data.fold((error) {
         emit(HomeErrorState(error: error.message));
@@ -27,19 +29,19 @@ class HomeCubit extends Cubit<HomeState> {
         /// [isNight] is a global value => lib/core/constant/variables.dart
         GlobalVariablesState.isNight = isNightTime(
             weather.sys.sunrise.toInt(), weather.sys.sunset.toInt());
-        WeatherTheme theme = WeatherTheme.fromWeatherState(
+        //
+        WeatherTheme theme = WeatherTheme.mapWeatherStateToTheme(
             weather.weatherState.mapToWeatherState());
+        //
+        model = Weather(
+            convertTemperatureToCelsius(weather.temperature.toDouble()),
+            convertTimeToReadableDate(weather.time.toInt()),
+            GlobalVariablesState.isNight ? theme.nightImage : theme.dayImage,
+            theme.textColor,
+            weather.weatherState,
+            Location.instance.city);
         emit(
-          HomeSuccessState(
-            weatherData: weather,
-            todayDate: convertTimeToReadableDate(weather.time.toInt()),
-            temperature:
-                convertTemperatureToCelsius(weather.temperature.toDouble()),
-            weatherImage: GlobalVariablesState.isNight
-                ? theme.nightImage
-                : theme.dayImage,
-            textColor: theme.textColor,
-          ),
+          HomeSuccessState(weatherData: model, sys: weather.sys),
         );
       });
     } catch (e) {

@@ -22,6 +22,7 @@ class AppLottie {
   static const String _lottiePath = "assets/lottie";
   //
   static const String fetchLocation = "$_lottiePath/location.json";
+  static const String locationService = "$_lottiePath/location_service.json";
   static const String locationNotFound = "$_lottiePath/location_not_found.json";
   static const String failure = "$_lottiePath/faliure.json";
   static const String noInternet = "$_lottiePath/no_internet.json";

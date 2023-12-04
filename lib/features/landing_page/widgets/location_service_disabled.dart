@@ -7,8 +7,8 @@ import '../../../core/animations/play_lottie.dart';
 import '../../../core/utils/app_images.dart';
 import '../bloc/location/location_bloc.dart';
 
-class PermissionDeniedWidget extends StatelessWidget {
-  const PermissionDeniedWidget({
+class LocationServiceDisabledWidget extends StatelessWidget {
+  const LocationServiceDisabledWidget({
     super.key,
   });
 
@@ -16,10 +16,11 @@ class PermissionDeniedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: PrimaryButton(
-        onTap: () => context.read<LocationBloc>().add(RetryPermissionEvent()),
+        onTap: () =>
+            context.read<LocationBloc>().add(EnableLocationServiceEvent()),
         isBorder: true,
         color: AppColors.white,
-        text: "Location Permission",
+        text: "Enable Location",
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: const Center(
@@ -29,10 +30,10 @@ class PermissionDeniedWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               PlayLottie(
-                  lottie: AppLottie.locationNotFound,
+                  lottie: AppLottie.locationService,
                   isPlayBackAndForward: true),
               Text(
-                  "The app requires access to your location in order to provide accurate weather information.\n Please enable location services to enjoy the app's full functionality.",
+                  "Hey! 🌦️ Boost your weather app experience—enable location services for hyper-local forecasts! 🌍📱",
                   textAlign: TextAlign.center),
             ],
           ),

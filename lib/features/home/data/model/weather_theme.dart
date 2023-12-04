@@ -13,7 +13,7 @@ class WeatherTheme {
     required this.nightImage,
     required this.textColor,
   });
-  factory WeatherTheme.fromWeatherState(WeatherState state) {
+  factory WeatherTheme.mapWeatherStateToTheme(WeatherState state) {
     switch (state) {
       case WeatherState.Storm:
         return WeatherTheme(

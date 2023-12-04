@@ -11,17 +11,9 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeSuccessState extends HomeState {
-  final WeatherModel weatherData;
-  final String todayDate;
-  final String temperature;
-  final String weatherImage;
-  final Color textColor;
-  HomeSuccessState(
-      {required this.weatherData,
-      required this.todayDate,
-      required this.temperature,
-      required this.weatherImage,
-      required this.textColor});
+  final Weather weatherData;
+  final Sys sys;
+  HomeSuccessState({required this.weatherData, required this.sys});
 }
 
 class HomeErrorState extends HomeState {

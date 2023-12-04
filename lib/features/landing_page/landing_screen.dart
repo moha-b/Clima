@@ -5,13 +5,13 @@ import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/data/repo/home_repo.dart';
 import 'package:clima/features/hourly_forecast/cubit/hourly_forecast_cubit.dart';
 import 'package:clima/features/landing_page/widgets/bottom_nav_bar_list.dart';
+import 'package:clima/features/landing_page/widgets/location_service_disabled.dart';
 import 'package:clima/features/landing_page/widgets/permission_denied_widget.dart';
 import 'package:clima/features/landing_page/widgets/screens.dart';
 import 'package:clima/features/landing_page/widgets/waiting_permission_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../core/global/variables.dart';
 import 'bloc/location/location_bloc.dart';
 import 'bloc/nav_bar/nav_bar_bloc.dart';
 
@@ -29,15 +29,18 @@ class LandingScreen extends StatelessWidget {
           create: (context) => LocationBloc()..add(GetLocationEvent()),
         ),
         BlocProvider(
-          create: (context) => HomeCubit(getIt.get<HomeRepository>()),
+          create: (context) =>
+              HomeCubit(getIt.get<HomeRepository>())..getTodayWeather(),
         ),
         BlocProvider(
           create: (context) =>
-              DailyForecastCubit(getIt.get<DailyForecastRepository>()),
+              DailyForecastCubit(getIt.get<DailyForecastRepository>())
+                ..fetchForecast5DaysData(),
         ),
         BlocProvider(
           create: (context) =>
-              HourlyForecastCubit(getIt.get<DailyForecastRepository>()),
+              HourlyForecastCubit(getIt.get<DailyForecastRepository>())
+                ..fetchForecast5DaysData(),
         ),
       ],
       child: BlocBuilder<LocationBloc, LocationState>(
@@ -46,25 +49,14 @@ class LandingScreen extends StatelessWidget {
             return const WaitingPermissionWidget();
           } else if (state is LocationPermissionDeniedState) {
             return const PermissionDeniedWidget();
+          } else if (state is LocationServiceDisabledState) {
+            return const LocationServiceDisabledWidget();
           } else if (state is FetchCurrentLocationState) {
-            GlobalVariablesState.lat = state.latitude;
-            GlobalVariablesState.lon = state.longitude;
-            fetchData(
-              context,
-              lat: state.latitude,
-              lon: state.longitude,
-            );
             return BlocBuilder<NavBarBloc, NavBarState>(
               builder: (context, state) {
                 return Scaffold(
                   body: RefreshIndicator(
-                    onRefresh: () async {
-                      fetchData(
-                        context,
-                        lat: GlobalVariablesState.lat,
-                        lon: GlobalVariablesState.lon,
-                      );
-                    },
+                    onRefresh: () async => fetchData(context),
                     child: SafeArea(
                       child: CustomScrollView(
                         slivers: [
@@ -98,19 +90,9 @@ class LandingScreen extends StatelessWidget {
     );
   }
 
-  void fetchData(BuildContext context,
-      {required double? lat, required double? lon}) async {
-    BlocProvider.of<DailyForecastCubit>(context).fetchForecast5DaysData(
-      lat: lat,
-      lon: lon,
-    );
-    BlocProvider.of<HourlyForecastCubit>(context).fetchForecast5DaysData(
-      lat: lat,
-      lon: lon,
-    );
-    BlocProvider.of<HomeCubit>(context).getTodayWeather(
-      latitude: lat,
-      longitude: lon,
-    );
+  void fetchData(BuildContext context) async {
+    BlocProvider.of<DailyForecastCubit>(context).fetchForecast5DaysData();
+    BlocProvider.of<HourlyForecastCubit>(context).fetchForecast5DaysData();
+    BlocProvider.of<HomeCubit>(context).getTodayWeather();
   }
 }
