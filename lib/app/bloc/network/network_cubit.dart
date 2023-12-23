@@ -12,7 +12,7 @@ class NetworkCubit extends Cubit<NetworkState> {
   late final StreamSubscription connectivityStreamSubscription;
   final Connectivity connectivity = Connectivity();
 
-  NetworkCubit() : super(ConnectedFailure()) {
+  NetworkCubit() : super(ConnectedInitial()) {
     connectivityStreamSubscription =
         connectivity.onConnectivityChanged.listen((result) {
       print(result);

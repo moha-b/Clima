@@ -1,5 +1,6 @@
 import 'package:clima/app/bloc/network/network_cubit.dart';
 import 'package:clima/app/bloc/theme/theme_cubit.dart';
+import 'package:clima/core/common/loading_widget.dart';
 import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
               builder: (context, state) {
                 if (state is ConnectedInitial) {
                   return const Scaffold(
-                    body: Center(child: CircularProgressIndicator()),
+                    body: LoadingWidget(),
                   );
                 } else if (state is ConnectedSuccess) {
                   return const LandingScreen();
