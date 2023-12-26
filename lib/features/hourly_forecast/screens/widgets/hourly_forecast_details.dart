@@ -31,18 +31,18 @@ class HourlyForecastDetails extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: Text(forecastList[index].hours),
+                child: Text(forecastList[index].hour!),
               ),
               Expanded(
                 flex: 3,
                 child: RepaintBoundary(
-                  child: Lottie.asset(forecastList[index].image),
+                  child: Lottie.asset(forecastList[index].image!),
                 ),
               ),
               const SizedBox(height: 8),
               Expanded(
                 child: Text(
-                  forecastList[index].temperature,
+                  forecastList[index].temperature!.toString(),
                   style: AppTypography.medium14(),
                 ),
               ),
@@ -51,7 +51,7 @@ class HourlyForecastDetails extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(Icons.water_drop_outlined, size: 16),
-                    Text(forecastList[index].humidity),
+                    Text(forecastList[index].humidity.toString()),
                   ],
                 ),
               ),

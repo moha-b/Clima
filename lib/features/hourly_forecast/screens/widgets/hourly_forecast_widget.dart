@@ -19,7 +19,7 @@ class _HourlyForecastWidgetState extends State<HourlyForecastWidget> {
       appBar: AppBar(
         title: const Text("Today's details"),
         actions: [
-          Text(widget.forecast[0].day),
+          Text(widget.forecast[0].todayDate!),
           const SizedBox(width: 8),
         ],
       ),

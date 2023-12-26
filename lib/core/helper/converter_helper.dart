@@ -1,3 +1,7 @@
+import 'package:clima/core/utils/utils.dart';
+
+import '../global/enums.dart';
+
 class TemperatureConverter {
   static double kelvinToCelsius(double kelvin) {
     return kelvin - 273.15;
@@ -54,5 +58,43 @@ class DateFormatter {
         "${dateTime.hour % 12 == 0 ? 12 : dateTime.hour % 12} ${dateTime.hour < 12 ? 'AM' : 'PM'}";
 
     return formattedTime;
+  }
+}
+
+String getDayImage(WeatherState weatherState) {
+  switch (weatherState) {
+    case WeatherState.Storm:
+      return AppLottie.dailyStorm;
+    case WeatherState.Rain:
+      return AppLottie.dailyDayRain;
+    case WeatherState.Snow:
+      return AppLottie.dailyDaySnow;
+    case WeatherState.Wind:
+      return AppLottie.dailyWind;
+    case WeatherState.Clear:
+      return AppLottie.dailyDay;
+    case WeatherState.Clouds:
+      return AppLottie.dailyDayCloud;
+    default:
+      return 'unknown_image.png';
+  }
+}
+
+String getNightImage(WeatherState weatherState) {
+  switch (weatherState) {
+    case WeatherState.Storm:
+      return AppLottie.dailyStorm;
+    case WeatherState.Rain:
+      return AppLottie.dailyNightRain;
+    case WeatherState.Snow:
+      return AppLottie.dailyNightSnow;
+    case WeatherState.Wind:
+      return AppLottie.dailyWind;
+    case WeatherState.Clear:
+      return AppLottie.dailyNight;
+    case WeatherState.Clouds:
+      return AppLottie.dailyNightCloud;
+    default:
+      return 'unknown_image.png';
   }
 }

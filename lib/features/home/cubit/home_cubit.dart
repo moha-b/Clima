@@ -14,14 +14,15 @@ import '../data/repo/home_repo.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeRepository repository;
-  var model;
-  HomeCubit(this.repository) : super(HomeLoadingState());
+  HomeRepository _repository;
+  final double? _lat = Location.instance.position?.latitude;
+  final double? _long = Location.instance.position?.longitude;
+  Weather? _model;
+  HomeCubit(this._repository) : super(HomeLoadingState());
 
-  getTodayWeather() async {
-    final data = await repository.getTodayWeather(
-        Location.instance.position?.latitude,
-        Location.instance.position?.longitude);
+
+  Future<void> getWeatherData() async {
+    final data = await _repository.getTodayWeather(_lat,_long);
     try {
       data.fold((error) {
         emit(HomeErrorState(error: error.message));
@@ -33,7 +34,7 @@ class HomeCubit extends Cubit<HomeState> {
         WeatherTheme theme = WeatherTheme.mapWeatherStateToTheme(
             weather.weatherState.mapToWeatherState());
         //
-        model = Weather(
+        _model = Weather(
             convertTemperatureToCelsius(weather.temperature.toDouble()),
             convertTimeToReadableDate(weather.time.toInt()),
             GlobalVariablesState.isNight ? theme.nightImage : theme.dayImage,
@@ -41,11 +42,11 @@ class HomeCubit extends Cubit<HomeState> {
             weather.weatherState,
             Location.instance.city);
         emit(
-          HomeSuccessState(weatherData: model, sys: weather.sys),
+          HomeSuccessState(weatherData: _model!, sys: weather.sys),
         );
       });
     } catch (e) {
-      print("/////////////////////////////////////////////\n $e");
+      print(e);
     }
   }
 }

@@ -1,21 +1,19 @@
-import 'dart:ui';
-
 class DailyForecast {
-  String date;
-  String humidity;
-  String temperature;
-  String description;
-  String main;
-  String image;
-  Color textColor;
+  String? time;
+  int? weatherCode;
+  String? sunrise;
+  String? sunset;
+  double? daylightDuration;
+  double? sunshineDuration;
+  double? uvIndexMax;
 
   DailyForecast({
-    required this.date,
-    required this.humidity,
-    required this.temperature,
-    required this.description,
-    required this.main,
-    required this.image,
-    required this.textColor,
+    this.time,
+    this.weatherCode,
+    this.sunrise,
+    this.sunset,
+    this.daylightDuration,
+    this.sunshineDuration,
+    this.uvIndexMax,
   });
 }

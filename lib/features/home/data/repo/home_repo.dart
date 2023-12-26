@@ -1,6 +1,6 @@
-import 'package:clima/core/error/error_handling.dart';
 import 'package:fpdart/fpdart.dart';
 
+import '../../../../core/error/error_handling.dart';
 import '../model/weather_model.dart';
 
 abstract class HomeRepository {
