@@ -1,4 +1,4 @@
-import 'package:clima/core/global/enums.dart';
+import 'package:clima/core/extensions/map_weather_code.dart';
 import 'package:clima/core/helper/converter_helper.dart';
 import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/features/daily_forecast/data/repo/detailed_forecast_repo.dart';
@@ -16,6 +16,8 @@ class DetailedForecastCubit extends Cubit<DetailedForecastState> {
   final DetailedForecastRepository _repository;
   DateTime? todayDate;
   DateTime? todayHours;
+  DateTime? sunset;
+  DateTime? sunrise;
   fetchWeatherData() async {
     var result = await _repository.fetchWeatherData(
         Location.instance.position?.latitude,
@@ -42,6 +44,8 @@ class DetailedForecastCubit extends Cubit<DetailedForecastState> {
         }
         if (forecast.hourly != null) {
           todayDate = DateTime.parse(forecast.hourly!.time![0]);
+          sunset = DateTime.parse(forecast.daily!.sunset![0]);
+          sunrise = DateTime.parse(forecast.daily!.sunrise![0]);
           for (int i = 0; i < forecast.hourly!.time!.length; i++) {
             todayHours = DateTime.parse(forecast.hourly!.time![i]);
             hourlyForecast.add(
@@ -58,8 +62,8 @@ class DetailedForecastCubit extends Cubit<DetailedForecastState> {
                         forecast.hourly!.weatherCode![i].mapToWeatherState()),
                 daylightDuration: forecast.daily!.daylightDuration![0],
                 sunshineDuration: forecast.daily!.sunshineDuration![0],
-                sunrise: forecast.daily!.sunrise![0],
-                sunset: forecast.daily!.sunset![0],
+                sunrise: DateFormat('h : m a').format(sunrise!),
+                sunset: DateFormat('h : m a').format(sunset!),
                 uvIndexMax: forecast.daily!.uvIndexMax![0],
               ),
             );

@@ -11,9 +11,8 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeSuccessState extends HomeState {
-  final Weather weatherData;
-  final Sys sys;
-  HomeSuccessState({required this.weatherData, required this.sys});
+  final WeatherData weather;
+  HomeSuccessState({required this.weather});
 }
 
 class HomeErrorState extends HomeState {

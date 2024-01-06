@@ -31,4 +31,16 @@ class HomeRepoImpl extends HomeRepository {
       }
     }
   }
+
+  @override
+  Future<Either<IErrorHandler, OpenMeteoCurrentResponse>> fetchCurrentWeather(
+      double? latitude, double? longitude) async {
+    try {
+      var result = await Dio().get(
+          "https://api.open-meteo.com/v1/forecast?latitude=$latitude&longitude=$longitude&current=temperature_2m,is_day,weather_code&timezone=auto&forecast_days=1&forecast_hours=24");
+      return right(OpenMeteoCurrentResponse.fromJson(result.data));
+    } catch (e) {
+      return left(ServerFailure(e.toString()));
+    }
+  }
 }

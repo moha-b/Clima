@@ -1,8 +1,6 @@
 import 'package:clima/app/bloc/theme/theme_cubit.dart';
 import 'package:clima/core/common/failure_widget.dart';
 import 'package:clima/core/common/loading_widget.dart';
-import 'package:clima/core/global/variables.dart';
-import 'package:clima/core/services/notification_service.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -16,22 +14,21 @@ class HomeScreen extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
         if (state is HomeSuccessState) {
-          BlocProvider.of<ThemeCubit>(context)
-              .switchTheme(GlobalVariablesState.isNight);
-          NotificationService.scheduleSunriseSunsetNotifications(
-              title: "Today's weather in ${state.weatherData.cityName}",
-              body:
-                  "${state..weatherData.temperature} • ${state.weatherData.weatherState}",
-              sunriseTime: state.sys.sunrise.toInt(),
-              sunsetTime: state.sys.sunset.toInt(),
-              imageAssetPath: state.weatherData.image);
+          BlocProvider.of<ThemeCubit>(context).switchTheme(state.weather.isDay);
+          // NotificationService.scheduleSunriseSunsetNotifications(
+          //     title: "Today's weather in ${state.weatherData.cityName}",
+          //     body:
+          //         "${state..weatherData.temperature} • ${state.weatherData.weatherState}",
+          //     sunriseTime: state.sys.sunrise.toInt(),
+          //     sunsetTime: state.sys.sunset.toInt(),
+          //     imageAssetPath: state.weatherData.image);
         }
       },
       builder: (context, state) {
         if (state is HomeLoadingState) {
           return const LoadingWidget();
         } else if (state is HomeSuccessState) {
-          return HomeWidget(weather: state.weatherData);
+          return HomeWidget(weather: state.weather);
         } else if (state is HomeErrorState) {
           return FailureWidget(text: state.error);
         } else {

@@ -29,7 +29,7 @@ class LandingScreen extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              HomeCubit(getIt.get<HomeRepository>())..getWeatherData(),
+              HomeCubit(getIt.get<HomeRepository>())..fetchWeatherData(),
         ),
         BlocProvider(
           create: (context) =>
@@ -86,6 +86,6 @@ class LandingScreen extends StatelessWidget {
 
   void fetchData(BuildContext context) async {
     BlocProvider.of<DetailedForecastCubit>(context).fetchWeatherData();
-    BlocProvider.of<HomeCubit>(context).getWeatherData();
+    BlocProvider.of<HomeCubit>(context).fetchWeatherData();
   }
 }

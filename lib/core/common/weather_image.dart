@@ -25,7 +25,7 @@ class _WeatherImageState extends State<WeatherImage>
       vsync: this,
     );
 
-    var tween = Tween<double>(begin: -20.0, end: 20.0);
+    var tween = Tween<double>(begin: -15.0, end: 40.0);
 
     _animation = tween.animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
@@ -47,21 +47,21 @@ class _WeatherImageState extends State<WeatherImage>
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              gradient: GlobalVariablesState.isNight
-                  ? const RadialGradient(
-                      colors: [
-                        Color(0xFFE2E0EF),
-                        Colors.transparent,
-                      ],
-                      stops: [0.1, 1.0],
-                      radius: 0.5,
-                    )
-                  : RadialGradient(
+              gradient: context.read<HomeCubit>().isDay
+                  ? RadialGradient(
                       colors: [
                         const Color(0xFFEFC5B4),
                         const Color(0xFFF2E477).withOpacity(0.001),
                       ],
                       stops: const [0.1, 1.0],
+                      radius: 0.5,
+                    )
+                  : const RadialGradient(
+                      colors: [
+                        Color(0xFFE2E0EF),
+                        Colors.transparent,
+                      ],
+                      stops: [0.1, 1.0],
                       radius: 0.5,
                     ),
             ),
