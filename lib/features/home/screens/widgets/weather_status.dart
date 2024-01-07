@@ -17,7 +17,7 @@ class WeatherStatus extends StatelessWidget {
       children: [
         TemperatureText(temperature: temperature),
         Text(weatherState!,
-            style: AppTypography.bold24(
+            style: AppTypography.bold28(
               color: textColor,
             )),
       ],

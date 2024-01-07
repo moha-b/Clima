@@ -3,23 +3,23 @@ import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../data/models/hourly_forecast_model.dart';
+import '../../data/models/weather_hourly_model.dart';
 
 class HourlyForecastDetails extends StatelessWidget {
   const HourlyForecastDetails({
     super.key,
-    required this.forecastList,
+    required this.hourlyForecast,
   });
 
-  final List<HourlyForecast> forecastList;
+  final WeatherHourly hourlyForecast;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: AppDimensions.height! * 0.2,
       child: ListView.separated(
-        itemCount: forecastList.length,
-        padding: const EdgeInsets.only(left: 16),
+        itemCount: hourlyForecast.time.length,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) => Container(
@@ -29,18 +29,18 @@ class HourlyForecastDetails extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: Text(forecastList[index].hour!),
+                child: Text(hourlyForecast.time[index]),
               ),
               Expanded(
                 flex: 3,
                 child: RepaintBoundary(
-                  child: Lottie.asset(forecastList[index].image!),
+                  child: Lottie.asset(hourlyForecast.image[index]),
                 ),
               ),
               const SizedBox(height: 8),
               Expanded(
                 child: Text(
-                  forecastList[index].temperature!.toString(),
+                  hourlyForecast.temperature[index].toString(),
                   style: AppTypography.medium14(),
                 ),
               ),
@@ -49,7 +49,7 @@ class HourlyForecastDetails extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(Icons.water_drop_outlined, size: 16),
-                    Text(forecastList[index].humidity.toString()),
+                    Text(hourlyForecast.humidity[index].toString()),
                   ],
                 ),
               ),

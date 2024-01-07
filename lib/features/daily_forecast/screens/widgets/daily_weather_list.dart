@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../data/models/daily_forecast_model.dart';
 
 class DailyWeatherList extends StatelessWidget {
   const DailyWeatherList({
     super.key,
-    required this.forecast,
   });
-
-  final List<DailyForecast> forecast;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +15,7 @@ class DailyWeatherList extends StatelessWidget {
             child: Text("No Data Yet"),
           );
         },
-        childCount: forecast.length,
+        childCount: 7,
       ),
     );
   }

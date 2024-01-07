@@ -1,4 +1,4 @@
-part of 'detailed_forecast_cubit.dart';
+part of 'hourly_forecast_cubit.dart';
 
 abstract class DetailedForecastState extends Equatable {
   const DetailedForecastState();
@@ -10,8 +10,8 @@ abstract class DetailedForecastState extends Equatable {
 class DetailedForecastInitial extends DetailedForecastState {}
 
 class DetailsForecastSuccess extends DetailedForecastState {
-  final List<DailyForecast> dailyForecast;
-  final List<HourlyForecast> hourlyForecast;
+  final Daily dailyForecast;
+  final WeatherHourly hourlyForecast;
   const DetailsForecastSuccess(
       {required this.dailyForecast, required this.hourlyForecast});
 }

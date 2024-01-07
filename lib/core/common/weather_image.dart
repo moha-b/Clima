@@ -2,10 +2,16 @@ part of '../../features/home/screens/widgets/widgets.dart';
 
 class WeatherImage extends StatefulWidget {
   final String? image;
+  double? begin;
+  double? end;
 
-  const WeatherImage({
+  final bool isCenter;
+  WeatherImage({
     Key? key,
     required this.image,
+    this.begin,
+    this.end,
+    this.isCenter = true,
   }) : super(key: key);
 
   @override
@@ -25,7 +31,8 @@ class _WeatherImageState extends State<WeatherImage>
       vsync: this,
     );
 
-    var tween = Tween<double>(begin: -15.0, end: 40.0);
+    var tween =
+        Tween<double>(begin: widget.begin ?? -10.0, end: widget.end ?? 45.0);
 
     _animation = tween.animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
@@ -41,37 +48,67 @@ class _WeatherImageState extends State<WeatherImage>
   @override
   Widget build(BuildContext context) {
     return RepaintBoundary(
-      child: Center(
-        child: Transform.translate(
-          offset: Offset(0, _animation.value),
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: context.read<HomeCubit>().isDay
-                  ? RadialGradient(
-                      colors: [
-                        const Color(0xFFEFC5B4),
-                        const Color(0xFFF2E477).withOpacity(0.001),
-                      ],
-                      stops: const [0.1, 1.0],
-                      radius: 0.5,
-                    )
-                  : const RadialGradient(
-                      colors: [
-                        Color(0xFFE2E0EF),
-                        Colors.transparent,
-                      ],
-                      stops: [0.1, 1.0],
-                      radius: 0.5,
-                    ),
+      child: widget.isCenter
+          ? Center(
+              child: Transform.translate(
+                offset: Offset(0, _animation.value),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: context.read<HomeCubit>().isDay
+                        ? RadialGradient(
+                            colors: [
+                              const Color(0xFFEFC5B4),
+                              const Color(0xFFF2E477).withOpacity(0.001),
+                            ],
+                            stops: const [0.1, 1.0],
+                            radius: 0.5,
+                          )
+                        : const RadialGradient(
+                            colors: [
+                              Color(0xFFE2E0EF),
+                              Colors.transparent,
+                            ],
+                            stops: [0.1, 1.0],
+                            radius: 0.5,
+                          ),
+                  ),
+                  child: Image.asset(
+                    widget.image!,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            )
+          : Transform.translate(
+              offset: Offset(0, _animation.value),
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: context.read<HomeCubit>().isDay
+                      ? RadialGradient(
+                          colors: [
+                            const Color(0xFFEFC5B4),
+                            const Color(0xFFF2E477).withOpacity(0.001),
+                          ],
+                          stops: const [0.1, 1.0],
+                          radius: 0.5,
+                        )
+                      : const RadialGradient(
+                          colors: [
+                            Color(0xFFE2E0EF),
+                            Colors.transparent,
+                          ],
+                          stops: [0.1, 1.0],
+                          radius: 0.5,
+                        ),
+                ),
+                child: Image.asset(
+                  widget.image!,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-            child: Image.asset(
-              widget.image!,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      ),
     );
   }
 

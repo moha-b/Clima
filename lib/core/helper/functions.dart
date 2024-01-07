@@ -5,24 +5,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../services/get_it_service.dart';
 import 'bloc_observer.dart';
-import 'converter_helper.dart';
 
-String convertTimeToReadableDate(int time) {
-  DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(time * 1000);
-  return DateFormatter.format(dateTime);
-}
+bool isNull(dynamic object, String property) {
+  List<String> propertyParts = property.split('.');
+  dynamic currentObject = object;
 
-String convertTemperatureToCelsius(double temperature) {
-  double temperatureInCelsius =
-      TemperatureConverter.kelvinToCelsius(temperature);
-  return '${temperatureInCelsius.round()}°';
-}
+  for (String part in propertyParts) {
+    if (currentObject == null) {
+      return true;
+    }
 
-// Check if it's night or day based on sunrise and sunset timestamps
-bool isNightTime(int sunriseTimestamp, int sunsetTimestamp) {
-  int currentTimestamp = DateTime.now().toUtc().millisecondsSinceEpoch ~/ 1000;
-  return currentTimestamp < sunriseTimestamp ||
-      currentTimestamp > sunsetTimestamp;
+    if (currentObject is Map) {
+      currentObject = currentObject[part];
+    } else if (currentObject is List) {
+      int? index = int.tryParse(part);
+      if (index != null && index >= 0 && index < currentObject.length) {
+        currentObject = currentObject[index];
+      } else {
+        return true; // Invalid index or not a list
+      }
+    } else {
+      return true; // Unknown type
+    }
+  }
+  return false;
 }
 
 initialization() {

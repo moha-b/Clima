@@ -1,4 +1,5 @@
 import '../global/enums.dart';
+import '../utils/app_images.dart';
 
 extension MapWeatherCode on int {
   WeatherState mapToWeatherState() {
@@ -41,6 +42,27 @@ extension MapWeatherCode on int {
         return WeatherState.Storm;
       default:
         return WeatherState.Unknown;
+    }
+  }
+}
+
+extension MapWeatherStateToImage on WeatherState {
+  String getImages(bool isDay) {
+    switch (this) {
+      case WeatherState.Storm:
+        return AppLottie.dailyStorm;
+      case WeatherState.Rain:
+        return isDay ? AppLottie.dailyDayRain : AppLottie.dailyNightRain;
+      case WeatherState.Snow:
+        return isDay ? AppLottie.dailyDaySnow : AppLottie.dailyNightSnow;
+      case WeatherState.Wind:
+        return AppLottie.dailyWind;
+      case WeatherState.Clear:
+        return isDay ? AppLottie.dailyDay : AppLottie.dailyNight;
+      case WeatherState.Clouds:
+        return isDay ? AppLottie.dailyDayCloud : AppLottie.dailyNightCloud;
+      default:
+        return AppLottie.dailyStorm;
     }
   }
 }
