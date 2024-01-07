@@ -20,12 +20,13 @@ dependencies:
   iconsax: ^0.0.8
   flutter_local_notifications: ^16.1.0
   path_provider: ^2.1.1
-  fl_chart: ^0.64.0
   equatable: ^2.0.5
   flutter_svg: ^2.0.9
   connectivity_plus: ^5.0.1
   geocoding: ^2.1.1
   google_maps_flutter: ^2.5.0
+  intl:
+  flutter_animate: ^4.3.0
 
 dev_dependencies:
   flutter_test:

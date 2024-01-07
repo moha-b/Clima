@@ -1,25 +1,29 @@
 import 'package:clima/core/common/failure_widget.dart';
 import 'package:clima/core/common/loading_widget.dart';
-import 'package:clima/features/hourly_forecast/cubit/hourly_forecast_cubit.dart';
 import 'package:clima/features/hourly_forecast/screens/widgets/hourly_forecast_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../cubit/hourly_forecast_cubit.dart';
 
 class HourlyForecastScreen extends StatelessWidget {
   const HourlyForecastScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HourlyForecastCubit, HourlyForecastState>(
+    return BlocBuilder<HourlyForecastCubit, DetailedForecastState>(
       builder: (context, state) {
-        if (state is HourlyForecastInitial) {
+        if (state is DetailedForecastInitial) {
           return const LoadingWidget();
-        } else if (state is HourlyForecastError) {
+        } else if (state is DetailsForecastSuccess) {
+          return HourlyForecastWidget(
+            hourlyForecast: state.hourlyForecast,
+            dailyForecast: state.dailyForecast,
+          );
+        } else if (state is DetailedForecastError) {
           return FailureWidget(text: state.errorMessage);
-        } else if (state is HourlyForecastLoaded) {
-          return HourlyForecastWidget(forecast: state.forecast);
         } else {
-          return const Center(child: Text("Something Wrong"));
+          return const FailureWidget();
         }
       },
     );

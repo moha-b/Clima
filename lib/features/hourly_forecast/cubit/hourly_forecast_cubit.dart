@@ -1,63 +1,78 @@
-import 'package:clima/core/global/enums.dart';
-import 'package:clima/core/helper/converter_helper.dart';
+import 'package:clima/core/extensions/map_weather_code.dart';
 import 'package:clima/core/helper/location_helper.dart';
+import 'package:clima/features/hourly_forecast/data/repo/hourly_forecast_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
-import '../../../core/global/variables.dart';
 import '../../../core/helper/functions.dart';
-import '../../daily_forecast/data/models/daily_weather_theme.dart';
-import '../../daily_forecast/data/models/forecast_5_days_model.dart';
-import '../../daily_forecast/data/repo/daily_forecast_repo.dart';
-import '../data/models/hourly_forecast_model.dart';
+import '../../home/data/model/weather_theme.dart';
+import '../data/models/weather_daily_model.dart';
+import '../data/models/weather_hourly_model.dart';
 
 part 'hourly_forecast_state.dart';
 
-class HourlyForecastCubit extends Cubit<HourlyForecastState> {
-  HourlyForecastCubit(this._repository) : super(HourlyForecastInitial());
-  final DailyForecastRepository _repository;
-  fetchForecast5DaysData() async {
-    var result = await _repository.fetchForecast5Days(
+class HourlyForecastCubit extends Cubit<DetailedForecastState> {
+  HourlyForecastCubit(this._repository) : super(DetailedForecastInitial());
+  final HourlyForecastRepository _repository;
+  final List<String> _propertiesToCheck = [
+    'hourly.time',
+    'hourly.temperature2m',
+    'daily.time',
+    'daily.temperature2mMax',
+    'daily.temperature2mMin',
+  ];
+
+  fetchWeatherData() async {
+    var result = await _repository.fetchWeatherData(
         Location.instance.position?.latitude,
         Location.instance.position?.longitude);
     result.fold(
-      (failure) => emit(HourlyForecastError(failure.message)),
-      (forecast) {
-        emit(HourlyForecastLoaded(_parseHourlyWeatherData(forecast)));
+      (failure) => emit(DetailedForecastError(failure.message)),
+      (response) {
+        // To make sure there is no null values
+        if (_propertiesToCheck.any((property) => isNull(response, property))) {
+          emit(const DetailedForecastError(
+              "Invalid or incomplete response data"));
+        }
+        emit(
+          DetailsForecastSuccess(
+            dailyForecast: Daily(
+                theme: WeatherTheme.mapWeatherStateToTheme(
+                    response.hourly.weatherCode[0].mapToWeatherState(),
+                    response.hourly.isDay[0] == 1 ? true : false),
+                date: DateFormat('EEEE, d MMMM')
+                    .format(DateTime.parse(response.daily.time[0])),
+                sunrise: DateFormat('h:mm a')
+                    .format(DateTime.parse(response.daily.sunrise[0])),
+                sunshineDuration: response.daily.sunshineDuration[0],
+                daylightDuration: response.daily.daylightDuration[0],
+                temperatureMax: response.daily.temperature2mMax[0],
+                temperatureMin: response.daily.temperature2mMin[0],
+                uvIndexMax: response.daily.uvIndexMax[0],
+                sunset: DateFormat('h:mm a')
+                    .format(DateTime.parse(response.daily.sunset[0])),
+                apparentTemperature: (response.daily.apparentTemperatureMax[0] +
+                        response.daily.apparentTemperatureMin[0]) /
+                    2),
+            hourlyForecast: WeatherHourly(
+                time: response.hourly.time
+                    .map((date) =>
+                        DateFormat('h a').format(DateTime.parse(date)))
+                    .toList(),
+                isDay: response.hourly.isDay,
+                weatherCode: response.hourly.weatherCode,
+                humidity: response.hourly.humidity,
+                temperature: response.hourly.temperature,
+                image: List<String>.generate(
+                  response.hourly.weatherCode.length,
+                  (index) => response.hourly.weatherCode[index]
+                      .mapToWeatherState()
+                      .getImages(response.hourly.isDay[index] == 1),
+                )),
+          ),
+        );
       },
     );
-  }
-
-  List<HourlyForecast> _parseHourlyWeatherData(Forecast5DaysModel forecast) {
-    List<HourlyForecast> hourlyForecasts = [];
-
-    String currentDay = DateTime.now().toString().substring(0, 10);
-
-    for (var item in forecast.list) {
-      String date = item.date;
-
-      // Check if the item's date matches the current day
-      if (date.substring(0, 10) == currentDay) {
-        String humidity = "${item.main.humidity}%";
-        String temperature = convertTemperatureToCelsius(item.main.temp);
-        String description = item.weather[0].description;
-        String main = item.weather[0].main;
-        DailyWeatherTheme theme = DailyWeatherTheme.fromWeatherState(
-            item.weather[0].main.mapToWeatherState());
-        hourlyForecasts.add(HourlyForecast(
-          hours: DateFormatter.formatHours(date),
-          day: DateFormatter.formatDay(date),
-          humidity: humidity,
-          temperature: temperature,
-          description: description,
-          data: item.main,
-          main: main,
-          image:
-              GlobalVariablesState.isNight ? theme.nightImage : theme.dayImage,
-          isExpanded: forecast.list[0] == item ? true : false,
-        ));
-      }
-    }
-    return hourlyForecasts;
   }
 }

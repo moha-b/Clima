@@ -1,9 +1,7 @@
 import 'package:clima/core/services/get_it_service.dart';
-import 'package:clima/features/daily_forecast/cubit/daily_forecast_cubit.dart';
-import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/data/repo/home_repo.dart';
-import 'package:clima/features/hourly_forecast/cubit/hourly_forecast_cubit.dart';
+import 'package:clima/features/hourly_forecast/data/repo/hourly_forecast_repo.dart';
 import 'package:clima/features/landing_page/widgets/bottom_nav_bar_list.dart';
 import 'package:clima/features/landing_page/widgets/location_service_disabled.dart';
 import 'package:clima/features/landing_page/widgets/permission_denied_widget.dart';
@@ -12,6 +10,7 @@ import 'package:clima/features/landing_page/widgets/waiting_permission_widget.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../hourly_forecast/cubit/hourly_forecast_cubit.dart';
 import 'bloc/location/location_bloc.dart';
 import 'bloc/nav_bar/nav_bar_bloc.dart';
 
@@ -30,17 +29,12 @@ class LandingScreen extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              HomeCubit(getIt.get<HomeRepository>())..getTodayWeather(),
+              HomeCubit(getIt.get<HomeRepository>())..fetchWeatherData(),
         ),
         BlocProvider(
           create: (context) =>
-              DailyForecastCubit(getIt.get<DailyForecastRepository>())
-                ..fetchForecast5DaysData(),
-        ),
-        BlocProvider(
-          create: (context) =>
-              HourlyForecastCubit(getIt.get<DailyForecastRepository>())
-                ..fetchForecast5DaysData(),
+              HourlyForecastCubit(getIt.get<HourlyForecastRepository>())
+                ..fetchWeatherData(),
         ),
       ],
       child: BlocBuilder<LocationBloc, LocationState>(
@@ -91,8 +85,7 @@ class LandingScreen extends StatelessWidget {
   }
 
   void fetchData(BuildContext context) async {
-    BlocProvider.of<DailyForecastCubit>(context).fetchForecast5DaysData();
-    BlocProvider.of<HourlyForecastCubit>(context).fetchForecast5DaysData();
-    BlocProvider.of<HomeCubit>(context).getTodayWeather();
+    BlocProvider.of<HourlyForecastCubit>(context).fetchWeatherData();
+    BlocProvider.of<HomeCubit>(context).fetchWeatherData();
   }
 }

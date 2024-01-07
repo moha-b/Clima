@@ -7,11 +7,11 @@ part 'theme_state.dart';
 class ThemeCubit extends Cubit<ThemeData> {
   ThemeCubit() : super(AppThemes.basic);
 
-  void switchTheme(bool isNight) {
-    if (isNight) {
-      emit(AppThemes.dark);
-    } else {
+  void switchTheme(bool isDay) {
+    if (isDay) {
       emit(AppThemes.light);
+    } else {
+      emit(AppThemes.dark);
     }
   }
 }

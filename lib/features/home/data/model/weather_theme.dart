@@ -4,51 +4,50 @@ import 'package:flutter/material.dart';
 import '../../../../core/global/enums.dart';
 
 class WeatherTheme {
-  final String dayImage;
-  final String nightImage;
+  final String image;
   final Color textColor;
 
   WeatherTheme({
-    required this.dayImage,
-    required this.nightImage,
+    required this.image,
     required this.textColor,
   });
-  factory WeatherTheme.mapWeatherStateToTheme(WeatherState state) {
+
+  factory WeatherTheme.mapWeatherStateToTheme(WeatherState state, bool isDay) {
+    String getImageBasedOnDayTime(String dayImage, String nightImage) {
+      return isDay ? dayImage : nightImage;
+    }
+
     switch (state) {
       case WeatherState.Storm:
         return WeatherTheme(
-          dayImage: AppImages.dayStorm,
-          nightImage: AppImages.nightStorm,
+          image:
+              getImageBasedOnDayTime(AppImages.dayStorm, AppImages.nightStorm),
           textColor: AppColors.thunderstorm,
         );
       case WeatherState.Rain:
         return WeatherTheme(
-          dayImage: AppImages.dayRain,
-          nightImage: AppImages.nightRain,
+          image: getImageBasedOnDayTime(AppImages.dayRain, AppImages.nightRain),
           textColor: AppColors.rain,
         );
       case WeatherState.Snow:
         return WeatherTheme(
-          dayImage: AppImages.daySnow,
-          nightImage: AppImages.nightSnow,
+          image: getImageBasedOnDayTime(AppImages.daySnow, AppImages.nightSnow),
           textColor: AppColors.snow,
         );
       case WeatherState.Wind:
         return WeatherTheme(
-          dayImage: AppImages.dayWind,
-          nightImage: AppImages.nightWind,
+          image: getImageBasedOnDayTime(AppImages.dayWind, AppImages.nightWind),
           textColor: AppColors.wind,
         );
       case WeatherState.Clear:
         return WeatherTheme(
-          dayImage: AppImages.daySun,
-          nightImage: AppImages.nightMoon,
+          image: getImageBasedOnDayTime(AppImages.daySun, AppImages.nightMoon),
           textColor: AppColors.clear,
         );
       case WeatherState.Clouds:
         return WeatherTheme(
-          dayImage: AppImages.dayClouds,
-          nightImage: AppImages.nightClouds,
+          image: getImageBasedOnDayTime(
+              AppImages.dayClouds, AppImages.nightClouds),
           textColor: AppColors.cloud,
         );
       case WeatherState.Unknown:

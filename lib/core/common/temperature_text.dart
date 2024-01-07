@@ -1,7 +1,8 @@
 import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../global/variables.dart';
+import '../../features/home/cubit/home_cubit.dart';
 
 class TemperatureText extends StatelessWidget {
   const TemperatureText({
@@ -18,25 +19,23 @@ class TemperatureText extends StatelessWidget {
     return GradientText(
       temperature!,
       style: style ?? AppTypography.bold144(),
-      gradient: GlobalVariablesState.isNight
+      gradient: context.read<HomeCubit>().isDay
           ? const LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              stops: [
-                  0.3,
-                  1
-                ],
-              colors: [
-                  AppColors.white,
-                  AppColors.primary,
-                ])
-          : const LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               stops: [0.5, 1.0],
               colors: [
                 AppColors.primary,
                 AppColors.white,
+              ],
+            )
+          : const LinearGradient(
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              stops: [0.3, 1],
+              colors: [
+                AppColors.white,
+                AppColors.primary,
               ],
             ),
     );

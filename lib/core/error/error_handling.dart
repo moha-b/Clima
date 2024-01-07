@@ -30,7 +30,8 @@ class ServerFailure extends IErrorHandler {
         }
         return ServerFailure('Unexpected Error, Please try again!');
       default:
-        return ServerFailure('Oops! There was an Error, Please try again');
+        return ServerFailure(
+            'An unexpected error occurred. Please Refresh the page.');
     }
   }
 

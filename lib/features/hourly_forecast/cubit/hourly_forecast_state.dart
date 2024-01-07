@@ -1,22 +1,27 @@
 part of 'hourly_forecast_cubit.dart';
 
-abstract class HourlyForecastState extends Equatable {
-  const HourlyForecastState();
+abstract class DetailedForecastState extends Equatable {
+  const DetailedForecastState();
 
   @override
   List<Object> get props => [];
 }
 
-class HourlyForecastInitial extends HourlyForecastState {}
+class DetailedForecastInitial extends DetailedForecastState {}
 
-class HourlyForecastLoaded extends HourlyForecastState {
-  final List<HourlyForecast> forecast;
-
-  const HourlyForecastLoaded(this.forecast);
+class DetailsForecastSuccess extends DetailedForecastState {
+  final Daily dailyForecast;
+  final WeatherHourly hourlyForecast;
+  const DetailsForecastSuccess(
+      {required this.dailyForecast, required this.hourlyForecast});
 }
 
-class HourlyForecastError extends HourlyForecastState {
+class HourlyForecastState extends DetailedForecastState {
+  const HourlyForecastState();
+}
+
+class DetailedForecastError extends DetailedForecastState {
   final String errorMessage;
 
-  const HourlyForecastError(this.errorMessage);
+  const DetailedForecastError(this.errorMessage);
 }

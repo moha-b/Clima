@@ -69,12 +69,24 @@ class AppTypography {
   static TextStyle medium14({Color? color}) => TextStyle(
       fontFamily: _fontFamily,
       fontSize: _sp14,
+      fontWeight: _w500,
+      color: color);
+  static TextStyle bold14({Color? color}) => TextStyle(
+      fontFamily: _fontFamily,
+      fontSize: _sp14,
       fontWeight: _bold,
       color: color);
+
   // 12
   static TextStyle medium12({Color? color}) => TextStyle(
       fontFamily: _fontFamily,
       fontSize: _sp12,
       fontWeight: _w400,
+      color: color);
+
+  static TextStyle thin14({Color? color}) => TextStyle(
+      fontFamily: _fontFamily,
+      fontSize: _sp14,
+      fontWeight: FontWeight.w300,
       color: color);
 }

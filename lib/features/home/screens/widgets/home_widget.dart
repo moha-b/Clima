@@ -5,7 +5,7 @@ class HomeWidget extends StatelessWidget {
     super.key,
     required this.weather,
   });
-  final Weather weather;
+  final WeatherData weather;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,21 +16,21 @@ class HomeWidget extends StatelessWidget {
           Expanded(
             child: TimeAndLocation(
               date: weather.date,
-              cityName: weather.cityName,
+              cityName: Location.instance.city,
             ),
           ),
           Expanded(
             flex: 2,
             child: WeatherImage(
-              image: weather.image,
+              image: weather.theme.image,
             ),
           ),
           Expanded(
             flex: 2,
             child: WeatherStatus(
-              temperature: weather.temperature,
-              weatherState: weather.weatherState,
-              textColor: weather.textColor,
+              temperature: weather.temperature.toString(),
+              weatherState: weather.weatherState.name.toString(),
+              textColor: weather.theme.textColor,
             ),
           ),
         ],
