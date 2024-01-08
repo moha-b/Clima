@@ -1,4 +1,3 @@
-import 'package:clima/core/utils/app_decoration.dart';
 import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -19,7 +18,7 @@ class HourlyForecastDetails extends StatelessWidget {
       height: AppDimensions.height! * 0.2,
       child: ListView.separated(
         itemCount: hourlyForecast.time.length,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: AppDimensions.width! * 0.03),
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) => Container(

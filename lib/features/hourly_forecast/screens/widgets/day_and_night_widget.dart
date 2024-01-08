@@ -13,7 +13,11 @@ class DayAndNight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: AppDimensions.width! * 0.03),
+      margin: EdgeInsets.only(
+        left: AppDimensions.width! * 0.03,
+        right: AppDimensions.width! * 0.03,
+        top: AppDimensions.height! * 0.02,
+      ),
       padding: EdgeInsets.all(AppDimensions.width! * 0.035),
       decoration: AppDecoration.container(context),
       width: AppDimensions.width,
