@@ -1,3 +1,4 @@
+import 'package:clima/core/services/network/models/end_points.dart';
 import 'package:clima/core/services/network/models/failure.dart';
 import 'package:clima/features/home/data/model/weather_model.dart';
 import 'package:clima/features/home/data/repo/home_repo.dart';
@@ -15,7 +16,7 @@ class HomeRepoImpl extends HomeRepository {
       double? latitude, double? longitude) async {
     try {
       var result = await client.get(
-        endPoint: "/forecast",
+        endPoint: EndPoints.forecast,
         params: {
           'current': 'temperature_2m,is_day,weather_code',
           'timezone': 'auto',

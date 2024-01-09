@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioHelper {
@@ -18,7 +19,7 @@ class DioHelper {
 
   BaseOptions _getDioOptions() {
     return BaseOptions(
-      baseUrl: "https://api.open-meteo.com/v1",
+      baseUrl: dotenv.get('BASE_URL'),
       receiveDataWhenStatusError: true,
     );
   }

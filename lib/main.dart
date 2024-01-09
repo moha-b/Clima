@@ -11,6 +11,7 @@ void main() async {
   /// 3 - [Bloc.observer] - Custom observer for BLoC events.
   /// 4 - [LottieCache] - Preloading Lottie animations.
   /// 5 - [Notifications] - initialize notification service.
-  initialization();
+  /// 6 - [Dotenv] - store apis in '.env' file.
+  await initialization();
   runApp(const MyApp());
 }

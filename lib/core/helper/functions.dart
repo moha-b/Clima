@@ -2,6 +2,7 @@ import 'package:clima/core/helper/lotte_cach_helper.dart';
 import 'package:clima/core/services/notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../services/get_it_service.dart';
 import 'bloc_observer.dart';
@@ -22,19 +23,20 @@ bool isNull(dynamic object, String property) {
       if (index != null && index >= 0 && index < currentObject.length) {
         currentObject = currentObject[index];
       } else {
-        return true; // Invalid index or not a list
+        return true;
       }
     } else {
-      return true; // Unknown type
+      return true;
     }
   }
   return false;
 }
 
-initialization() {
+initialization() async {
   WidgetsFlutterBinding.ensureInitialized();
-  NotificationService.initialize();
+  await NotificationService.initialize();
   setup();
   Bloc.observer = MyBlocObserver();
-  LottieCache.cache();
+  await LottieCache.cache();
+  await dotenv.load(fileName: "assets/env/api.env");
 }

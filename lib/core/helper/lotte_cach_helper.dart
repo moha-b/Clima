@@ -10,11 +10,11 @@ class LottieCache {
     _compositions[assetName] = await AssetLottie(assetName).load();
   }
 
-  static cache() {
-    add(AppLottie.fetchLocation);
-    add(AppLottie.locationNotFound);
-    add(AppLottie.noInternet);
-    add(AppLottie.loadingWeather);
-    add(AppLottie.failure);
+  static cache() async {
+    await add(AppLottie.fetchLocation);
+    await add(AppLottie.locationNotFound);
+    await add(AppLottie.noInternet);
+    await add(AppLottie.loadingWeather);
+    await add(AppLottie.failure);
   }
 }

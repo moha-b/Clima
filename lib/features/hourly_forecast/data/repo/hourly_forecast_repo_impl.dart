@@ -3,6 +3,7 @@ import 'package:clima/core/services/network/models/failure.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../core/services/network/api_service.dart';
+import '../../../../core/services/network/models/end_points.dart';
 import '../models/open_meteo_hourly_response_model.dart';
 import 'hourly_forecast_repo.dart';
 
@@ -14,7 +15,7 @@ class HourlyForecastRepoImpl extends HourlyForecastRepository {
       double? latitude, double? longitude) async {
     try {
       var result = await client.get(
-        endPoint: '/forecast',
+        endPoint: EndPoints.forecast,
         params: {
           'hourly': 'temperature_2m,relative_humidity_2m,weather_code,is_day',
           'daily':
