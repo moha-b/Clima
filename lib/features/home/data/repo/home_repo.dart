@@ -1,12 +1,9 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/error/error_handling.dart';
+import '../../../../core/services/network/models/failure.dart';
 import '../model/weather_model.dart';
 
 abstract class HomeRepository {
-  Future<Either<IErrorHandler, WeatherModel>> getTodayWeather(
-      double? latitude, double? longitude);
-
-  Future<Either<IErrorHandler, OpenMeteoCurrentResponse>> fetchCurrentWeather(
+  Future<Either<Failure, OpenMeteoCurrentResponse>> fetchCurrentWeather(
       double? latitude, double? longitude);
 }

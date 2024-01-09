@@ -1,4 +1,4 @@
-import '../global/enums.dart';
+import '../global/weather_state.dart';
 import '../utils/app_images.dart';
 
 extension MapWeatherCode on int {

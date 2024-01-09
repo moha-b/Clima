@@ -1,4 +1,4 @@
-import 'package:clima/core/extensions/map_weather_code.dart';
+import 'package:clima/core/extensions/map_weather_code_extensions.dart';
 import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/features/hourly_forecast/data/repo/hourly_forecast_repo.dart';
 import 'package:equatable/equatable.dart';

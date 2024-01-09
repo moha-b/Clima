@@ -1,4 +1,4 @@
-import 'package:clima/core/global/enums.dart';
+import 'package:clima/core/global/weather_state.dart';
 import 'package:clima/features/home/data/model/weather_theme.dart';
 
 class OpenMeteoCurrentResponse {

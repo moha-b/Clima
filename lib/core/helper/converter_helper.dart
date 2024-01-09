@@ -1,6 +1,6 @@
 import 'package:clima/core/utils/utils.dart';
 
-import '../global/enums.dart';
+import '../global/weather_state.dart';
 
 class TemperatureConverter {
   static double kelvinToCelsius(double kelvin) {
