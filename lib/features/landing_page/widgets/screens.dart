@@ -7,5 +7,5 @@ import '../../daily_forecast/screens/daily_forecast_screen.dart';
 const List<Widget> screens = <Widget>[
   HomeScreen(),
   HourlyForecastScreen(),
-  Forecast5DaysScreen(),
+  DailyForecastScreen(),
 ];
