@@ -1,4 +1,7 @@
-part of '../../features/home/screens/widgets/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../features/home/cubit/home_cubit.dart';
 
 class WeatherImage extends StatefulWidget {
   final String? image;
@@ -7,12 +10,12 @@ class WeatherImage extends StatefulWidget {
 
   final bool isCenter;
   WeatherImage({
-    Key? key,
+    super.key,
     required this.image,
     this.begin,
     this.end,
     this.isCenter = true,
-  }) : super(key: key);
+  });
 
   @override
   _WeatherImageState createState() => _WeatherImageState();
@@ -32,7 +35,7 @@ class _WeatherImageState extends State<WeatherImage>
     );
 
     var tween =
-        Tween<double>(begin: widget.begin ?? -10.0, end: widget.end ?? 45.0);
+        Tween<double>(begin: widget.begin ?? -5.0, end: widget.end ?? 80.0);
 
     _animation = tween.animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
