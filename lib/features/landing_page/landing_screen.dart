@@ -1,4 +1,6 @@
 import 'package:clima/core/services/get_it_service.dart';
+import 'package:clima/features/daily_forecast/cubit/daily_forecast_cubit.dart';
+import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/data/repo/home_repo.dart';
 import 'package:clima/features/hourly_forecast/data/repo/hourly_forecast_repo.dart';
@@ -35,6 +37,11 @@ class LandingScreen extends StatelessWidget {
           create: (context) =>
               HourlyForecastCubit(getIt.get<HourlyForecastRepository>())
                 ..fetchWeatherData(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              DailyForecastCubit(getIt.get<DailyForecastRepository>())
+                ..fetchDailyData(),
         ),
       ],
       child: BlocBuilder<LocationBloc, LocationState>(

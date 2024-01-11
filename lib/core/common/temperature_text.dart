@@ -16,28 +16,30 @@ class TemperatureText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GradientText(
-      temperature!,
-      style: style ?? AppTypography.bold144(),
-      gradient: context.read<HomeCubit>().isDay
-          ? const LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.5, 1.0],
-              colors: [
-                AppColors.primary,
-                AppColors.white,
-              ],
-            )
-          : const LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              stops: [0.3, 1],
-              colors: [
-                AppColors.white,
-                AppColors.primary,
-              ],
-            ),
+    return RepaintBoundary(
+      child: GradientText(
+        "${temperature!}°",
+        style: style ?? AppTypography.bold144(),
+        gradient: context.read<HomeCubit>().isDay
+            ? const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.5, 1.0],
+                colors: [
+                  AppColors.primary,
+                  AppColors.white,
+                ],
+              )
+            : const LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                stops: [0.3, 1],
+                colors: [
+                  AppColors.white,
+                  AppColors.primary,
+                ],
+              ),
+      ),
     );
   }
 }

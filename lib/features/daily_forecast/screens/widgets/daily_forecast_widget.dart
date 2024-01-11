@@ -1,14 +1,17 @@
-import 'package:clima/core/common/temperature_text.dart';
 import 'package:clima/core/utils/utils.dart';
+import 'package:clima/features/daily_forecast/data/models/daily_weather_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/animations/fade_slide_animation.dart';
+import 'daily_widget.dart';
 
 class DailyForecastWidget extends StatefulWidget {
   const DailyForecastWidget({
     super.key,
+    required this.weatherModel,
   });
 
+  final DailyWeatherModel weatherModel;
   @override
   _DailyForecastWidgetState createState() => _DailyForecastWidgetState();
 }
@@ -42,36 +45,7 @@ class _DailyForecastWidgetState extends State<DailyForecastWidget>
         itemBuilder: (context, index) {
           return FadeSlideAnimation(
             controller: _controller,
-            child: Container(
-              height: AppDimensions.height! * 0.15,
-              padding: const EdgeInsets.all(16),
-              decoration: AppDecoration.container(context, isBordered: true),
-              child: Row(
-                children: [
-                  const FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: TemperatureText(temperature: "21"),
-                  ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "got this feeling yeah you know",
-                          style: AppTypography.medium12(),
-                        ),
-                        Text(
-                          "cuz this magic in my bonces",
-                          style: AppTypography.medium12(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(child: Container()),
-                ],
-              ),
-            ),
+            child: DailyWidget(weatherModel: widget.weatherModel, index: index),
           );
         },
         separatorBuilder: (BuildContext context, int index) =>

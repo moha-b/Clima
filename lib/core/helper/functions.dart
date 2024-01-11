@@ -7,6 +7,14 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../services/get_it_service.dart';
 import 'bloc_observer.dart';
 
+T isNotNull<T>(T variable) {
+  return variable ?? -1 as T;
+}
+
+num calculateAverage(dynamic value1, dynamic value2) {
+  return (isNotNull(value1) + isNotNull(value2)) ~/ 2;
+}
+
 bool isNull(dynamic object, String property) {
   List<String> propertyParts = property.split('.');
   dynamic currentObject = object;
