@@ -1,4 +1,3 @@
-import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/core/helper/lotte_cach_helper.dart';
 import 'package:clima/core/services/notification_service.dart';
 import 'package:flutter/material.dart';
@@ -43,8 +42,6 @@ bool isNull(dynamic object, String property) {
 
 initialization() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await LocationHelper.instance.getPositionDetails(
-      currentPosition: await LocationHelper.instance.getLatLong());
   await NotificationService.initialize();
   setup();
   Bloc.observer = MyBlocObserver();

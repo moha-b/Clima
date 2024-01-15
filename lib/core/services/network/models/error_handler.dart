@@ -1,5 +1,5 @@
+import 'package:clima/core/enum/network_response.dart';
 import 'package:clima/core/extensions/network_response_extension.dart';
-import 'package:clima/core/global/network_response.dart';
 import 'package:dio/dio.dart';
 
 import 'failure.dart';

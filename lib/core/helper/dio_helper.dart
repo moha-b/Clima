@@ -19,7 +19,7 @@ class DioHelper {
 
   BaseOptions _getDioOptions() {
     return BaseOptions(
-      baseUrl: dotenv.get('BASE_URL'),
+      baseUrl: dotenv.get('WEATHER_BASE_URL'),
       receiveDataWhenStatusError: true,
     );
   }

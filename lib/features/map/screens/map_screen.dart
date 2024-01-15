@@ -1,9 +1,8 @@
 import 'dart:async';
 
+import 'package:clima/core/helper/location_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import '../../../core/global/variables.dart';
 
 class Map extends StatefulWidget {
   const Map({super.key});
@@ -14,9 +13,9 @@ class Map extends StatefulWidget {
 
 class _MapState extends State<Map> {
   Completer<GoogleMapController> _controller = Completer();
-  Set<Marker> _markers = Set<Marker>();
-  static LatLng _center =
-      LatLng(GlobalVariablesState.lat!, GlobalVariablesState.lon!);
+  final Set<Marker> _markers = Set<Marker>();
+  static final LatLng _center = LatLng(Location.instance.position!.latitude,
+      Location.instance.position!.longitude);
 
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);

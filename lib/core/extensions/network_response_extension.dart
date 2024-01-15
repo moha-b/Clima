@@ -1,4 +1,4 @@
-import 'package:clima/core/global/network_response.dart';
+import 'package:clima/core/enum/network_response.dart';
 
 import '../services/network/models/failure.dart';
 import '../services/network/models/response_code.dart';

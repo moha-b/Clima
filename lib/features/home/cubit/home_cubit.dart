@@ -1,11 +1,11 @@
 import 'package:clima/core/extensions/map_weather_code_extensions.dart';
+import 'package:clima/core/helper/date_helper.dart';
 import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/core/utils/app_images.dart';
 import 'package:clima/features/home/data/model/weather_model.dart';
 import 'package:clima/features/home/data/model/weather_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 import '../data/repo/home_repo.dart';
 
@@ -22,19 +22,12 @@ class HomeCubit extends Cubit<HomeState> {
     result.fold(
       (failure) => emit(HomeErrorState(error: failure.message)),
       (response) {
-        if (response == null ||
-            response.time == null ||
-            response.temperature == null ||
-            response.weatherCode == null ||
-            response.isDay == null) {
-          emit(HomeErrorState(error: "Invalid response data"));
-        }
         isDay = response.isDay == 1 ? true : false;
 
         emit(HomeSuccessState(
           weather: WeatherData(
               // to modify the date to appear as 'month, day, year'
-              date: DateFormat.yMMMMd().format(DateTime.parse(response.time)),
+              date: DateHelper.formatDate(response.time, 'yMMMMd'),
               temperature: response.temperature.ceil(),
               // contains the image and text color based on it's a day or night
               theme: WeatherTheme.mapWeatherStateToTheme(

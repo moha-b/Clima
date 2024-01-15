@@ -21,11 +21,8 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       bool locationPermission = await locationHelper.checkPermission();
       if (locationPermission) {
         var position = await locationHelper.getLatLong();
-        locationHelper.getPositionDetails(currentPosition: position);
-        emit(FetchCurrentLocationState(
-          latitude: position.latitude,
-          longitude: position.longitude,
-        ));
+        await locationHelper.getPositionDetails(currentPosition: position);
+        emit(FetchCurrentLocationState());
       } else {
         emit(LocationPermissionDeniedState());
       }
@@ -36,7 +33,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
 
   _reRequestPermission(
       RetryPermissionEvent event, Emitter<LocationState> emit) async {
-    LocationHelper.instance.openAppSettings();
+    await LocationHelper.instance.openAppSettings();
     bool isAppSettingsOpened =
         await LocationHelper.instance.isAppSettingsOpens();
     if (isAppSettingsOpened) {
@@ -48,7 +45,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
 
   _enableLocationService(
       EnableLocationServiceEvent event, Emitter<LocationState> emit) async {
-    LocationHelper.instance.openLocationSettings();
+    await LocationHelper.instance.openLocationSettings();
     bool isSettingsOpened =
         await LocationHelper.instance.isLocationSettingsOpens();
     if (isSettingsOpened) {

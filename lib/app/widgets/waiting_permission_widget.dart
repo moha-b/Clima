@@ -1,7 +1,7 @@
 import 'package:clima/core/animations/play_lottie.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/utils/app_images.dart';
+import '../../core/utils/app_images.dart';
 
 class WaitingPermissionWidget extends StatelessWidget {
   const WaitingPermissionWidget({super.key});

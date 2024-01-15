@@ -27,36 +27,36 @@ class DailyForecastCubit extends Cubit<DailyForecastState> {
           DailyForecastSuccess(
             dailyWeather: DailyWeatherModel(
               temperature: List.generate(
-                  response.temperature2mMin!.length,
+                  response.temperature2mMin.length,
                   (index) => calculateAverage(
-                        response.temperature2mMin?[index],
-                        response.temperature2mMax?[index],
+                        response.temperature2mMin[index],
+                        response.temperature2mMax[index],
                       )),
               apparentTemperature: List.generate(
-                  response.apparentTemperatureMax!.length,
+                  response.apparentTemperatureMax.length,
                   (index) => calculateAverage(
-                        response.apparentTemperatureMax?[index],
-                        response.apparentTemperatureMin?[index],
+                        response.apparentTemperatureMax[index],
+                        response.apparentTemperatureMin[index],
                       )),
               image: List.generate(
-                response.weatherCode!.length,
-                (index) => (response.weatherCode?[index] ?? -1)
+                response.weatherCode.length,
+                (index) => (response.weatherCode[index] ?? -1)
                     .mapToWeatherState()
                     .getImages(false),
               ),
-              uvIndexMax: response.uvIndexMax!
+              uvIndexMax: response.uvIndexMax
                   .map((uvIndex) => isNotNull(uvIndex))
                   .toList(),
-              windSpeed10mMax: response.windSpeed10mMax!
+              windSpeed10mMax: response.windSpeed10mMax
                   .map((windSpeed) => isNotNull(windSpeed))
                   .toList(),
-              rainSum: response.rainSum!
+              rainSum: response.rainSum
                   .map((rainSum) => isNotNull(rainSum))
                   .toList(),
-              snowfallSum: response.snowfallSum!
+              snowfallSum: response.snowfallSum
                   .map((snowfallSum) => isNotNull(snowfallSum))
                   .toList(),
-              time: response.time!.map((data) => isNotNull(data)).toList(),
+              time: response.time.map((data) => isNotNull(data)).toList(),
             ),
           ),
         );

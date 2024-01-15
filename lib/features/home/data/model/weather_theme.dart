@@ -1,7 +1,7 @@
 import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/global/weather_state.dart';
+import '../../../../core/enum/weather_state.dart';
 
 class WeatherTheme {
   final String image;

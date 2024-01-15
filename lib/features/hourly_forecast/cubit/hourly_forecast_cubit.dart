@@ -1,9 +1,9 @@
 import 'package:clima/core/extensions/map_weather_code_extensions.dart';
+import 'package:clima/core/helper/date_helper.dart';
 import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/features/hourly_forecast/data/repo/hourly_forecast_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 import '../../../core/helper/functions.dart';
 import '../../home/data/model/weather_theme.dart';
@@ -41,24 +41,23 @@ class HourlyForecastCubit extends Cubit<DetailedForecastState> {
                 theme: WeatherTheme.mapWeatherStateToTheme(
                     response.hourly.weatherCode[0].mapToWeatherState(),
                     response.hourly.isDay[0] == 1 ? true : false),
-                date: DateFormat('EEEE, d MMMM')
-                    .format(DateTime.parse(response.daily.time[0])),
-                sunrise: DateFormat('h:mm a')
-                    .format(DateTime.parse(response.daily.sunrise[0])),
+                date: DateHelper.formatDate(
+                    response.daily.time[0], 'EEEE, d MMMM'),
+                sunrise:
+                    DateHelper.formatDate(response.daily.sunrise[0], 'h:mm a'),
                 sunshineDuration: response.daily.sunshineDuration[0],
                 daylightDuration: response.daily.daylightDuration[0],
                 temperatureMax: response.daily.temperature2mMax[0],
                 temperatureMin: response.daily.temperature2mMin[0],
                 uvIndexMax: response.daily.uvIndexMax[0],
-                sunset: DateFormat('h:mm a')
-                    .format(DateTime.parse(response.daily.sunset[0])),
+                sunset:
+                    DateHelper.formatDate(response.daily.sunset[0], 'h:mm a'),
                 apparentTemperature: (response.daily.apparentTemperatureMax[0] +
-                        response.daily.apparentTemperatureMin[0]) /
+                        response.daily.apparentTemperatureMin[0]) ~/
                     2),
             hourlyForecast: WeatherHourly(
                 time: response.hourly.time
-                    .map((date) =>
-                        DateFormat('h a').format(DateTime.parse(date)))
+                    .map((date) => DateHelper.formatDate(date, 'h a'))
                     .toList(),
                 isDay: response.hourly.isDay,
                 weatherCode: response.hourly.weatherCode,
