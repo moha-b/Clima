@@ -1,6 +1,7 @@
 import 'package:clima/app/bloc/theme/theme_cubit.dart';
 import 'package:clima/core/common/failure_widget.dart';
 import 'package:clima/core/common/loading_widget.dart';
+import 'package:clima/core/services/notification_service.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -12,16 +13,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is HomeSuccessState) {
           BlocProvider.of<ThemeCubit>(context).switchTheme(state.weather.isDay);
-          // NotificationService.scheduleSunriseSunsetNotifications(
-          //     title: "Today's weather in ${state.weatherData.cityName}",
-          //     body:
-          //         "${state..weatherData.temperature} • ${state.weatherData.weatherState}",
-          //     sunriseTime: state.sys.sunrise.toInt(),
-          //     sunsetTime: state.sys.sunset.toInt(),
-          //     imageAssetPath: state.weatherData.image);
+          await NotificationService.scheduleNotifications(
+            body: state.weather.temperature.toString(),
+            imageAssetPath: state.weather.theme.image,
+          );
         }
       },
       builder: (context, state) {

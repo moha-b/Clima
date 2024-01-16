@@ -35,7 +35,7 @@ class _WeatherImageState extends State<WeatherImage>
     );
 
     var tween =
-        Tween<double>(begin: widget.begin ?? -5.0, end: widget.end ?? 80.0);
+        Tween<double>(begin: widget.begin ?? -5.0, end: widget.end ?? 40.0);
 
     _animation = tween.animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
