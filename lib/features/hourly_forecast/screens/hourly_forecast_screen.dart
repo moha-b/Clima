@@ -19,6 +19,7 @@ class HourlyForecastScreen extends StatelessWidget {
           return HourlyForecastWidget(
             hourlyForecast: state.hourlyForecast,
             dailyForecast: state.dailyForecast,
+            article: state.article,
           );
         } else if (state is DetailedForecastError) {
           return FailureWidget(text: state.errorMessage);

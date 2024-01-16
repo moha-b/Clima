@@ -49,8 +49,8 @@ class CustomAppBar extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: WeatherImage(
                       image: daily.theme.image,
-                      begin: -30,
-                      end: 5,
+                      begin: -10,
+                      end: 10,
                       isCenter: false,
                     ),
                   ),

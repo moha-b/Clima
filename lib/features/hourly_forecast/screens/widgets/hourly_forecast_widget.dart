@@ -3,23 +3,22 @@ import 'package:flutter/material.dart';
 
 import '../../data/models/weather_daily_model.dart';
 import '../../data/models/weather_hourly_model.dart';
+import '../../data/models/weather_news_model.dart';
 import 'custom_app_bar.dart';
 import 'day_and_night_widget.dart';
 import 'forecast_info_widget.dart';
 import 'hourly_forecast_details.dart';
 import 'news_widget.dart';
 
-class HourlyForecastWidget extends StatefulWidget {
+class HourlyForecastWidget extends StatelessWidget {
   const HourlyForecastWidget(
-      {super.key, required this.hourlyForecast, required this.dailyForecast});
+      {super.key,
+      required this.hourlyForecast,
+      required this.dailyForecast,
+      required this.article});
   final WeatherHourly hourlyForecast;
   final Daily dailyForecast;
-
-  @override
-  State<HourlyForecastWidget> createState() => _HourlyForecastWidgetState();
-}
-
-class _HourlyForecastWidgetState extends State<HourlyForecastWidget> {
+  final WeatherNewsModel article;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +30,8 @@ class _HourlyForecastWidgetState extends State<HourlyForecastWidget> {
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.pin,
                 background: CustomAppBar(
-                  daily: widget.dailyForecast,
-                  temperature: widget.hourlyForecast.temperature[0],
+                  daily: dailyForecast,
+                  temperature: hourlyForecast.temperature[0],
                 ),
               ),
             ),
@@ -40,19 +39,21 @@ class _HourlyForecastWidgetState extends State<HourlyForecastWidget> {
               child: SizedBox(height: AppDimensions.height! * 0.02),
             ),
             SliverToBoxAdapter(
-              child:
-                  HourlyForecastDetails(hourlyForecast: widget.hourlyForecast),
+              child: HourlyForecastDetails(hourlyForecast: hourlyForecast),
             ),
-            const SliverToBoxAdapter(
-              child: NewsWidget(),
+            SliverToBoxAdapter(
+              child: NewsWidget(
+                article: article,
+                dailyForecast: dailyForecast,
+              ),
             ),
-            const SliverToBoxAdapter(
-              child: ForecastInfoWidget(),
+            SliverToBoxAdapter(
+              child: ForecastInfoWidget(forecast: dailyForecast),
             ),
             SliverToBoxAdapter(
               child: DayAndNight(
-                sunset: widget.dailyForecast.sunset,
-                sunrise: widget.dailyForecast.sunrise,
+                sunset: dailyForecast.sunset,
+                sunrise: dailyForecast.sunrise,
               ),
             ),
             SliverToBoxAdapter(

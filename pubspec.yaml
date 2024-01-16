@@ -16,6 +16,7 @@ dependencies:
   geolocator: ^10.1.0
   fpdart: ^1.1.0
   flutter_bloc: ^8.1.3
+  url_launcher: ^6.2.3
   get_it: ^7.6.6
   lottie: ^2.7.0
   iconsax: ^0.0.8
@@ -56,6 +57,9 @@ flutter:
     - assets/images/weather/Night Storm.webp
     - assets/images/weather/Night Moon.webp
     - assets/images/weather/Night Wind.webp
+    - assets/images/weather/humidity.svg
+    - assets/images/weather/sun.svg
+    - assets/images/weather/wind.svg
     - assets/lottie/
 
   # To add custom fonts to your application, add a fonts section here,
