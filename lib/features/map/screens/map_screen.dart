@@ -12,12 +12,14 @@ class Map extends StatefulWidget {
 }
 
 class _MapState extends State<Map> {
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
   final Set<Marker> _markers = Set<Marker>();
+  String mapTheme = '';
   static final LatLng _center = LatLng(Location.instance.position!.latitude,
       Location.instance.position!.longitude);
 
   void _onMapCreated(GoogleMapController controller) {
+    controller.setMapStyle(mapTheme);
     _controller.complete(controller);
   }
 
@@ -35,7 +37,11 @@ class _MapState extends State<Map> {
   @override
   void initState() {
     super.initState();
-
+    DefaultAssetBundle.of(context)
+        .loadString('assets/map/map_dark_theme.json')
+        .then((value) {
+      mapTheme = value;
+    });
     _setMarker(_center);
   }
 
@@ -46,9 +52,17 @@ class _MapState extends State<Map> {
         GoogleMap(
           onMapCreated: _onMapCreated,
           markers: _markers,
+          circles: {
+            Circle(
+                circleId: const CircleId("1"),
+                center: _center,
+                fillColor: Colors.blueAccent.withOpacity(0.1),
+                strokeWidth: 2,
+                radius: 600),
+          },
           initialCameraPosition: CameraPosition(
             target: _center,
-            zoom: 17.0,
+            zoom: 16.0,
           ),
         ),
       ],
