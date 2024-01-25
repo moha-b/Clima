@@ -61,6 +61,7 @@ flutter:
     - assets/images/weather/sun.svg
     - assets/images/weather/wind.svg
     - assets/lottie/
+    - assets/map/map_dark_theme.json
 
   # To add custom fonts to your application, add a fonts section here,
   # example:
