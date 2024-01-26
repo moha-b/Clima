@@ -14,7 +14,7 @@ class ForecastInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height! * 0.18,
+      height: AppDimensions.height! * 0.2,
       margin: EdgeInsets.only(
         left: AppDimensions.width! * 0.03,
         right: AppDimensions.width! * 0.03,
@@ -33,11 +33,14 @@ class ForecastInfoWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-                  child: SvgPicture.asset(list[index].image,
-                      fit: BoxFit.contain, width: AppDimensions.width! * 0.14),
+                  child: FittedBox(
+                      child: SvgPicture.asset(list[index].image,
+                          fit: BoxFit.cover)),
                 ),
+                const SizedBox(height: 15),
                 Text(list[index].title, style: AppTypography.bold14()),
-                Text(list[index].content),
+                const SizedBox(height: 5),
+                Text("${list[index].content}${list[index].prefix}"),
               ],
             ),
           );

@@ -1,10 +1,12 @@
 import 'package:clima/features/hourly_forecast/data/models/weather_daily_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/common/temperature_text.dart';
 import '../../../../core/common/weather_image.dart';
 import '../../../../core/helper/location_helper.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../home/cubit/home_cubit.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar(
@@ -25,6 +27,7 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: FittedBox(
@@ -42,22 +45,21 @@ class CustomAppBar extends StatelessWidget {
           ),
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: WeatherImage(
-                      image: daily.theme.image,
-                      begin: -10,
-                      end: 10,
-                      isCenter: false,
-                    ),
+                  child: WeatherImage(
+                    image: context.read<HomeCubit>().theme?.image,
+                    begin: -10,
+                    end: 10,
+                    isCenter: false,
                   ),
                 ),
-                const SizedBox(height: 16),
                 Text(
-                  "${daily.temperatureMin} / ${daily.temperatureMax}  feels like ${daily.apparentTemperature}",
+                  "${daily.temperatureMin}° ~ ${daily.temperatureMax}°",
+                ),
+                Text(
+                  "feels like ${daily.apparentTemperature}°",
                 ),
               ],
             ),

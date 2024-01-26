@@ -45,7 +45,7 @@ class NotificationService {
 
     await _flutterLocalNotificationsPlugin.zonedSchedule(
       001,
-      "Today's weather in ${Location.instance.country}, ${Location.instance.city}",
+      "Today's weather in ${Location.instance.city}",
       body,
       scheduledTime,
       NotificationDetails(

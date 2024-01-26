@@ -4,8 +4,9 @@ class ForecastInfoModel {
   final String title;
   final String image;
   final String content;
+  final String prefix;
 
-  ForecastInfoModel(this.title, this.image, this.content);
+  ForecastInfoModel(this.title, this.image, this.content, this.prefix);
 }
 
 List<ForecastInfoModel> getForecastInfo({
@@ -14,9 +15,9 @@ List<ForecastInfoModel> getForecastInfo({
   required String wind,
 }) {
   List<ForecastInfoModel> forecastInfoList = [
-    ForecastInfoModel("UV index", AppImages.sunSvg, uvIndex),
-    ForecastInfoModel("Humidity", AppImages.humiditySvg, humidity),
-    ForecastInfoModel("Wind", AppImages.windSvg, wind),
+    ForecastInfoModel("UV index", AppImages.sunSvg, uvIndex, "°"),
+    ForecastInfoModel("Humidity", AppImages.humiditySvg, humidity, "%"),
+    ForecastInfoModel("Wind", AppImages.windSvg, wind, "km/h"),
   ];
   return forecastInfoList;
 }

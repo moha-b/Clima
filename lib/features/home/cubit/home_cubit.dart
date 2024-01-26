@@ -13,25 +13,27 @@ part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepository _repository;
-  final double? _lat = Location.instance.position?.latitude;
-  final double? _long = Location.instance.position?.longitude;
   bool isDay = false;
+  WeatherTheme? theme;
   HomeCubit(this._repository) : super(HomeLoadingState());
   fetchWeatherData() async {
-    var result = await _repository.fetchCurrentWeather(_lat, _long);
+    var result = await _repository.fetchCurrentWeather(
+      Location.instance.position?.latitude,
+      Location.instance.position?.longitude,
+    );
     result.fold(
       (failure) => emit(HomeErrorState(error: failure.message)),
       (response) {
         isDay = response.isDay == 1 ? true : false;
-
+        theme = WeatherTheme.mapWeatherStateToTheme(
+            response.weatherCode.mapToWeatherState(), isDay);
         emit(HomeSuccessState(
           weather: WeatherData(
               // to modify the date to appear as 'month, day, year'
               date: DateHelper.formatDate(response.time, 'yMMMMd'),
               temperature: response.temperature.ceil(),
               // contains the image and text color based on it's a day or night
-              theme: WeatherTheme.mapWeatherStateToTheme(
-                  response.weatherCode.mapToWeatherState(), isDay),
+              theme: theme!,
               weatherState: response.weatherCode.mapToWeatherState(),
               isDay: isDay),
         ));
