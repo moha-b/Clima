@@ -2,6 +2,9 @@ class AppImages {
   static const String _weatherImagesPath = "assets/images/weather";
   static const String windSvg = "$_weatherImagesPath/wind.svg";
   static const String sunSvg = "$_weatherImagesPath/sun.svg";
+  static const String sunnySvg = "$_weatherImagesPath/sunny.svg";
+  static const String rainSvg = "$_weatherImagesPath/rain.svg";
+  static const String snowSvg = "$_weatherImagesPath/snow.svg";
   static const String humiditySvg = "$_weatherImagesPath/humidity.svg";
   //
   static const String daySun = "$_weatherImagesPath/Day Sun.webp";

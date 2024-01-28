@@ -60,6 +60,9 @@ flutter:
     - assets/images/weather/humidity.svg
     - assets/images/weather/sun.svg
     - assets/images/weather/wind.svg
+    - assets/images/weather/snow.svg
+    - assets/images/weather/rain.svg
+    - assets/images/weather/sunny.svg
     - assets/lottie/
     - assets/map/map_dark_theme.json
 

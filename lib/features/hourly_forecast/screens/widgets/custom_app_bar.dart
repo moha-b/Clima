@@ -55,6 +55,7 @@ class CustomAppBar extends StatelessWidget {
                     isCenter: false,
                   ),
                 ),
+                const SizedBox(height: 16),
                 Text(
                   "${daily.temperatureMin}° ~ ${daily.temperatureMax}°",
                 ),
