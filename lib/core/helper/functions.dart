@@ -42,9 +42,11 @@ bool isNull(dynamic object, String property) {
 
 initialization() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await NotificationService.initialize();
   setup();
   Bloc.observer = MyBlocObserver();
-  await LottieCache.cache();
-  await dotenv.load(fileName: "assets/env/api.env");
+  await Future.wait([
+    dotenv.load(fileName: "assets/env/api.env"),
+    LottieCache.cache(),
+    NotificationService.initialize(),
+  ]);
 }

@@ -15,6 +15,7 @@ class ForecastInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: AppDimensions.height! * 0.2,
+      width: double.infinity,
       margin: EdgeInsets.only(
         left: AppDimensions.width! * 0.03,
         right: AppDimensions.width! * 0.03,
@@ -33,9 +34,8 @@ class ForecastInfoWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-                  child: FittedBox(
-                      child: SvgPicture.asset(list[index].image,
-                          fit: BoxFit.cover)),
+                  child: SvgPicture.asset(list[index].image,
+                      fit: BoxFit.contain, width: double.infinity),
                 ),
                 const SizedBox(height: 15),
                 Text(list[index].title, style: AppTypography.bold14()),
