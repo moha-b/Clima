@@ -1,13 +1,4 @@
-import 'dart:async';
-
-import 'package:clima/features/hourly_forecast/data/models/weather_news_model.dart';
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../../../../core/utils/utils.dart';
-import '../../data/models/weather_daily_model.dart';
-import 'news.dart';
+part of 'widgets.dart';
 
 class NewsWidget extends StatefulWidget {
   const NewsWidget(

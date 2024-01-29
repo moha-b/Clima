@@ -1,9 +1,4 @@
-import 'package:clima/core/utils/utils.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../data/models/forecast_info_model.dart';
-import '../../data/models/weather_daily_model.dart';
+part of 'widgets.dart';
 
 class ForecastInfoWidget extends StatelessWidget {
   const ForecastInfoWidget({

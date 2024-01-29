@@ -1,8 +1,5 @@
-import 'package:clima/app/bloc/network/network_cubit.dart';
-import 'package:clima/app/bloc/theme/theme_cubit.dart';
-import 'package:clima/app/widgets/location_service_disabled.dart';
-import 'package:clima/app/widgets/permission_denied_widget.dart';
-import 'package:clima/app/widgets/waiting_permission_widget.dart';
+import 'package:clima/app/bloc/bloc.dart';
+import 'package:clima/app/widgets/widgets.dart';
 import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +7,6 @@ import 'package:lottie/lottie.dart';
 
 import '../core/common/loading_widget.dart';
 import '../features/landing_page/landing_screen.dart';
-import 'bloc/location/location_bloc.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

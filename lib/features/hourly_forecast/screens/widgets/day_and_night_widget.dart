@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../../../core/utils/utils.dart';
+part of 'widgets.dart';
 
 class DayAndNight extends StatelessWidget {
   const DayAndNight({

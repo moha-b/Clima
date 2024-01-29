@@ -1,7 +1,6 @@
-import 'package:clima/core/common/failure_widget.dart';
-import 'package:clima/core/common/loading_widget.dart';
+import 'package:clima/core/common/common.dart';
 import 'package:clima/features/daily_forecast/cubit/daily_forecast_cubit.dart';
-import 'package:clima/features/daily_forecast/screens/widgets/daily_forecast_widget.dart';
+import 'package:clima/features/daily_forecast/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

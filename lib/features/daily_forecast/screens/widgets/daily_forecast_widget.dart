@@ -1,9 +1,4 @@
-import 'package:clima/core/utils/utils.dart';
-import 'package:clima/features/daily_forecast/data/models/daily_weather_model.dart';
-import 'package:flutter/material.dart';
-
-import '../../../../core/animations/fade_slide_animation.dart';
-import 'daily_widget.dart';
+part of 'widgets.dart';
 
 class DailyForecastWidget extends StatefulWidget {
   const DailyForecastWidget({

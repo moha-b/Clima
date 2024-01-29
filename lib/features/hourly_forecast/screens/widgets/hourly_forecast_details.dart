@@ -1,8 +1,4 @@
-import 'package:clima/core/utils/utils.dart';
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-
-import '../../data/models/weather_hourly_model.dart';
+part of 'widgets.dart';
 
 class HourlyForecastDetails extends StatelessWidget {
   const HourlyForecastDetails({

@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lottie/lottie.dart';
-
-import '../../../../core/common/temperature_text.dart';
-import '../../../../core/helper/date_helper.dart';
-import '../../../../core/utils/utils.dart';
-import '../../data/models/daily_weather_model.dart';
+part of 'widgets.dart';
 
 class DailyWidget extends StatelessWidget {
   const DailyWidget({
@@ -80,35 +73,6 @@ class DailyWidget extends StatelessWidget {
           const SizedBox(width: 16),
         ],
       ),
-    );
-  }
-}
-
-class DataWidget extends StatelessWidget {
-  const DataWidget({
-    super.key,
-    required this.apparentTemperature,
-    required this.icon,
-  });
-
-  final String apparentTemperature;
-  final String icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SvgPicture.asset(
-          icon,
-          width: AppDimensions.width! * 0.07,
-          fit: BoxFit.cover,
-        ),
-        const SizedBox(width: 5),
-        Text(
-          apparentTemperature,
-          style: AppTypography.medium12(),
-        ),
-      ],
     );
   }
 }

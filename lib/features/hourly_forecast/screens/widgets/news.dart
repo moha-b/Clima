@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../../../core/utils/app_typography.dart';
+part of 'widgets.dart';
 
 class News extends StatelessWidget {
   const News({

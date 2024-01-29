@@ -1,12 +1,4 @@
-import 'package:clima/features/hourly_forecast/data/models/weather_daily_model.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/common/temperature_text.dart';
-import '../../../../core/common/weather_image.dart';
-import '../../../../core/helper/location_helper.dart';
-import '../../../../core/utils/utils.dart';
-import '../../../home/cubit/home_cubit.dart';
+part of 'widgets.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar(
