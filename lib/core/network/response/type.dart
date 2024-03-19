@@ -1,3 +1,5 @@
+part of '../network.dart';
+
 enum NetworkResponse {
   SUCCESS,
   NO_CONTENT,

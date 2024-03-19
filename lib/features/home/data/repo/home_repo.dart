@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../../../core/services/network/models/failure.dart';
+import '../../../../core/network/network.dart';
 import '../model/weather_model.dart';
 
 abstract class HomeRepository {

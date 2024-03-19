@@ -1,3 +1,5 @@
+part of '../network.dart';
+
 class ResponseCode {
   static const int SUCCESS = 200;
   static const int NO_CONTENT = 201;

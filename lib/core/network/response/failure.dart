@@ -1,3 +1,5 @@
+part of '../network.dart';
+
 class Failure {
   int code;
   String message;

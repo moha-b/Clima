@@ -4,6 +4,7 @@ import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/core/utils/app_images.dart';
 import 'package:clima/features/home/data/model/weather_model.dart';
 import 'package:clima/features/home/data/model/weather_theme.dart';
+import 'package:clima/features/home/data/repo/home_repo_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,10 +13,10 @@ import '../data/repo/home_repo.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  final HomeRepository _repository;
+  final HomeRepository _repository = HomeRepoImpl();
   bool isDay = false;
   WeatherTheme? theme;
-  HomeCubit(this._repository) : super(HomeLoadingState());
+  HomeCubit() : super(HomeLoadingState());
   fetchWeatherData() async {
     var result = await _repository.fetchCurrentWeather(
       Location.instance.position?.latitude,

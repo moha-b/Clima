@@ -1,8 +1,4 @@
-import 'package:clima/core/enum/network_response.dart';
-
-import '../services/network/models/failure.dart';
-import '../services/network/models/response_code.dart';
-import '../services/network/models/response_message.dart';
+part of '../network.dart';
 
 extension NetworkResponseExtension on NetworkResponse {
   Failure getMessage() {
