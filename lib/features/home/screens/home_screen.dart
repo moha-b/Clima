@@ -1,6 +1,6 @@
 import 'package:clima/app/bloc/theme/theme_cubit.dart';
 import 'package:clima/core/common/common.dart';
-import 'package:clima/core/services/notification_service.dart';
+import 'package:clima/core/managers/notification_service.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
 import 'package:clima/features/home/screens/widgets/widgets.dart';
 import 'package:flutter/material.dart';
