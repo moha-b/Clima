@@ -1,4 +1,3 @@
-import 'package:clima/app/bloc/app_bloc.dart';
 import 'package:clima/app/bloc/bloc.dart';
 import 'package:clima/app/widgets/widgets.dart';
 import 'package:clima/core/navigation/navigation.dart';
@@ -16,7 +15,6 @@ class MyApp extends StatelessWidget {
     AppDimensions.config(context);
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => AppBloc()),
         BlocProvider(
           create: (context) => LocationBloc()..add(GetLocationEvent()),
         ),
