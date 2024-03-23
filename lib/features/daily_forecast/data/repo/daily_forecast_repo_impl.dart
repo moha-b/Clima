@@ -1,19 +1,15 @@
-import 'package:clima/core/services/network/api_service.dart';
-import 'package:clima/core/services/network/models/end_points.dart';
-import 'package:clima/core/services/network/models/error_handler.dart';
-import 'package:clima/core/services/network/models/failure.dart';
 import 'package:clima/features/daily_forecast/data/models/open_meteo_daily_response.dart';
 import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo.dart';
 import 'package:fpdart/fpdart.dart';
 
+import '../../../../core/network/network.dart';
+
 class DailyForecastRepoImpl extends DailyForecastRepository {
-  final ApiService client;
-  DailyForecastRepoImpl(this.client);
   @override
   Future<Either<Failure, OpenMeteoDailyResponse>> fetchWeatherData(
       double? latitude, double? longitude) async {
     try {
-      var result = await client.get(
+      var result = await NetworkHelper.instance.get(
         endPoint: EndPoints.forecast,
         params: {
           'daily':
@@ -27,7 +23,7 @@ class DailyForecastRepoImpl extends DailyForecastRepository {
       );
       return right(OpenMeteoDailyResponse.fromJson(result.data));
     } catch (error) {
-      return left(ErrorHandler.handle(error).failure);
+      return left(ErrorHandler.handle(error).failure!);
     }
   }
 }

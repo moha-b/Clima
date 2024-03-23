@@ -1,3 +1,5 @@
+part of '../network.dart';
+
 class ResponseMessage {
   static const String SUCCESS = "Operation successful!";
   static const String NO_CONTENT =

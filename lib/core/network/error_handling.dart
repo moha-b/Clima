@@ -1,17 +1,12 @@
-import 'package:clima/core/enum/network_response.dart';
-import 'package:clima/core/extensions/network_response_extension.dart';
-import 'package:dio/dio.dart';
-
-import 'failure.dart';
+part of 'network.dart';
 
 class ErrorHandler implements Exception {
-  late Failure failure;
+  Failure? failure;
 
   ErrorHandler.handle(dynamic error) {
     if (error is DioException) {
       failure = _handleError(error);
     } else {
-      // default error
       failure = NetworkResponse.DEFAULT.getMessage();
     }
   }

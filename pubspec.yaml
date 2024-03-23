@@ -1,6 +1,6 @@
 name: clima
 
-version: 2.0.0
+version: 2.1.0
 
 environment:
   sdk: '>=3.1.3 <4.0.0'
@@ -11,29 +11,27 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  dio: ^5.4.0
-  pretty_dio_logger: ^1.3.1
-  geolocator: ^10.1.0
+  dio: ^5.4.1
+  geolocator: ^11.0.0
   fpdart: ^1.1.0
-  flutter_bloc: ^8.1.3
-  url_launcher: ^6.2.3
-  get_it: ^7.6.6
-  lottie: ^2.7.0
+  flutter_bloc: ^8.1.4
+  url_launcher: ^6.2.5
+  get_it: ^7.6.7
+  lottie: ^3.1.0
   iconsax: ^0.0.8
-  flutter_local_notifications: ^16.3.0
-  path_provider: ^2.1.1
+  shared_preferences: ^2.2.2
+  flutter_local_notifications: ^17.0.0
+  path_provider: ^2.1.2
   equatable: ^2.0.5
-  flutter_svg: ^2.0.9
-  connectivity_plus: ^5.0.2
-  geocoding: ^2.1.1
-  google_maps_flutter: ^2.5.1
-  intl:
-  flutter_dotenv: ^5.1.0
+  flutter_svg: ^2.0.10+1
+  geocoding: ^3.0.0
+  google_maps_flutter: ^2.6.0
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  pretty_dio_logger: ^1.3.1
   flutter_lints: ^3.0.1
 
 

@@ -22,6 +22,20 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def dartEnv = [
+        GOOGLE_MAPS_API: '',
+        NEWS_API_KEY: ''
+];
+if (project.hasProperty('dart-defines')) {
+    dartEnv = dartEnv + project.property('dart-defines')
+            .split(',')
+            .collectEntries { entry ->
+                def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+                [(pair.first()): pair.last()]
+            }
+}
+
+
 android {
     namespace "com.example.clima"
     compileSdkVersion 34

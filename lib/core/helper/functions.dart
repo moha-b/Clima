@@ -1,11 +1,7 @@
+import 'package:clima/core/caching/caching_helper.dart';
 import 'package:clima/core/helper/lotte_cach_helper.dart';
-import 'package:clima/core/services/notification_service.dart';
+import 'package:clima/core/managers/notification_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
-import '../services/get_it_service.dart';
-import 'bloc_observer.dart';
 
 T isNotNull<T>(T variable) {
   return variable ?? -1 as T;
@@ -42,10 +38,8 @@ bool isNull(dynamic object, String property) {
 
 initialization() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setup();
-  Bloc.observer = MyBlocObserver();
   await Future.wait([
-    dotenv.load(fileName: "assets/env/api.env"),
+    CacheHelper.init(),
     LottieCache.cache(),
     NotificationService.initialize(),
   ]);

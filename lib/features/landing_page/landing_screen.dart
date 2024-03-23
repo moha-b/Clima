@@ -1,9 +1,5 @@
-import 'package:clima/core/services/get_it_service.dart';
 import 'package:clima/features/daily_forecast/cubit/daily_forecast_cubit.dart';
-import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo.dart';
 import 'package:clima/features/home/cubit/home_cubit.dart';
-import 'package:clima/features/home/data/repo/home_repo.dart';
-import 'package:clima/features/hourly_forecast/data/repo/hourly_forecast_repo.dart';
 import 'package:clima/features/landing_page/widgets/bottom_nav_bar_list.dart';
 import 'package:clima/features/landing_page/widgets/screens.dart';
 import 'package:flutter/material.dart';
@@ -23,18 +19,13 @@ class LandingScreen extends StatelessWidget {
           create: (context) => NavBarBloc(),
         ),
         BlocProvider(
-          create: (context) =>
-              HomeCubit(getIt.get<HomeRepository>())..fetchWeatherData(),
+          create: (context) => HomeCubit()..fetchWeatherData(),
         ),
         BlocProvider(
-          create: (context) =>
-              HourlyForecastCubit(getIt.get<HourlyForecastRepository>())
-                ..fetchWeatherData(),
+          create: (context) => HourlyForecastCubit()..fetchWeatherData(),
         ),
         BlocProvider(
-          create: (context) =>
-              DailyForecastCubit(getIt.get<DailyForecastRepository>())
-                ..fetchDailyData(),
+          create: (context) => DailyForecastCubit()..fetchDailyData(),
         ),
       ],
       child: BlocBuilder<NavBarBloc, NavBarState>(

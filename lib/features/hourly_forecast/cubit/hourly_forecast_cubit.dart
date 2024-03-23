@@ -2,6 +2,7 @@ import 'package:clima/core/extensions/map_weather_code_extensions.dart';
 import 'package:clima/core/helper/date_helper.dart';
 import 'package:clima/core/helper/location_helper.dart';
 import 'package:clima/features/hourly_forecast/data/repo/hourly_forecast_repo.dart';
+import 'package:clima/features/hourly_forecast/data/repo/hourly_forecast_repo_impl.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,8 +15,8 @@ import '../data/models/weather_news_model.dart';
 part 'hourly_forecast_state.dart';
 
 class HourlyForecastCubit extends Cubit<DetailedForecastState> {
-  HourlyForecastCubit(this._repository) : super(DetailedForecastInitial());
-  final HourlyForecastRepository _repository;
+  HourlyForecastCubit() : super(DetailedForecastInitial());
+  final HourlyForecastRepository _repository = HourlyForecastRepoImpl();
   final List<String> _propertiesToCheck = [
     'hourly.time',
     'hourly.temperature2m',
