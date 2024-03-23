@@ -8,8 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../core/common/temperature_text.dart';
-import '../../../../core/common/weather_image.dart';
+import '../../../../core/common/common.dart';
 import '../../../../core/helper/location_helper.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../home/cubit/home_cubit.dart';

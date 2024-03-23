@@ -1,10 +1,9 @@
-import 'package:clima/core/common/primary_button.dart';
-import 'package:clima/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/animations/play_lottie.dart';
-import '../../core/utils/app_images.dart';
+import '../../core/common/common.dart';
+import '../../core/utils/utils.dart';
 import '../bloc/location/location_bloc.dart';
 
 class PermissionDeniedWidget extends StatelessWidget {

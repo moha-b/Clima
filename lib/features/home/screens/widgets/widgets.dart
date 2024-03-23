@@ -5,8 +5,7 @@ import 'package:clima/features/map/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../core/common/temperature_text.dart';
-import '../../../../core/common/weather_image.dart';
+import '../../../../core/common/common.dart';
 
 part 'home_widget.dart';
 part 'time_and_location.dart';

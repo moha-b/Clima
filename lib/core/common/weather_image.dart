@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../features/home/cubit/home_cubit.dart';
+part of 'common.dart';
 
 class WeatherImage extends StatefulWidget {
   final String? image;

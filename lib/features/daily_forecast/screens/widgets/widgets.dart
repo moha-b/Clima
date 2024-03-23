@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../core/animations/fade_slide_animation.dart';
-import '../../../../core/common/temperature_text.dart';
+import '../../../../core/common/common.dart';
 import '../../../../core/helper/date_helper.dart';
 
 part 'daily_forecast_widget.dart';

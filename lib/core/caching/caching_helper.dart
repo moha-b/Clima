@@ -1,6 +1,4 @@
-import 'dart:developer';
-
-import 'package:shared_preferences/shared_preferences.dart';
+part of 'caching.dart';
 
 class CacheHelper {
   static CacheHelper? instance;

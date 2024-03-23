@@ -1,6 +1,10 @@
-export 'app_colors.dart';
-export 'app_decoration.dart';
-export 'app_dimn.dart';
-export 'app_images.dart';
-export 'app_themes.dart';
-export 'app_typography.dart';
+import 'package:flutter/material.dart';
+
+import '../navigation/navigation.dart';
+
+part 'app_colors.dart';
+part 'app_decoration.dart';
+part 'app_dimn.dart';
+part 'app_images.dart';
+part 'app_themes.dart';
+part 'app_typography.dart';

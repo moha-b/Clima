@@ -1,4 +1,4 @@
-import 'package:clima/core/utils/app_images.dart';
+import 'package:clima/core/utils/utils.dart';
 import 'package:lottie/lottie.dart';
 
 class LottieCache {

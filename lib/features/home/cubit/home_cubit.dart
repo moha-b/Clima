@@ -1,7 +1,7 @@
 import 'package:clima/core/extensions/map_weather_code_extensions.dart';
 import 'package:clima/core/helper/date_helper.dart';
 import 'package:clima/core/helper/location_helper.dart';
-import 'package:clima/core/utils/app_images.dart';
+import 'package:clima/core/utils/utils.dart';
 import 'package:clima/features/home/data/model/weather_model.dart';
 import 'package:clima/features/home/data/model/weather_theme.dart';
 import 'package:clima/features/home/data/repo/home_repo_impl.dart';

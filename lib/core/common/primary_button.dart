@@ -1,7 +1,4 @@
-import 'package:clima/core/utils/utils.dart';
-import 'package:flutter/material.dart';
-
-import '../animations/button_animation.dart';
+part of 'common.dart';
 
 class PrimaryButton extends StatelessWidget {
   final VoidCallback onTap;
