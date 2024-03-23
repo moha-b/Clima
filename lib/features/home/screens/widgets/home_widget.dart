@@ -9,7 +9,7 @@ class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: 24.horizontalInsets,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

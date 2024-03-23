@@ -32,10 +32,10 @@ class _DailyForecastWidgetState extends State<DailyForecastWidget>
         title: const Text("Weekly Forecast"),
       ),
       body: ListView.separated(
-        itemCount: 15,
+        itemCount: widget.weatherModel.image.length,
         padding: EdgeInsets.symmetric(
-          vertical: AppDimensions.height! * 0.01,
-          horizontal: AppDimensions.width! * 0.03,
+          vertical: 8.h,
+          horizontal: 16.w,
         ),
         itemBuilder: (context, index) {
           return FadeSlideAnimation(
@@ -44,7 +44,7 @@ class _DailyForecastWidgetState extends State<DailyForecastWidget>
           );
         },
         separatorBuilder: (BuildContext context, int index) =>
-            const SizedBox(height: 16),
+            SizedBox(height: 16.h),
       ),
     );
   }

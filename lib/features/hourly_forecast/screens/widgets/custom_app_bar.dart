@@ -10,16 +10,13 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: AppDimensions.width! * 0.03,
-        vertical: AppDimensions.height! * 0.02,
-      ),
+      padding: 16.allInsets,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
                   child: FittedBox(
@@ -27,10 +24,15 @@ class CustomAppBar extends StatelessWidget {
                     child: TemperatureText(temperature: temperature.toString()),
                   ),
                 ),
-                Text(Location.instance.city, style: AppTypography.bold24()),
+                Text(
+                  Location.instance.city,
+                  style: AppTypography.bold24(),
+                  textAlign: TextAlign.center,
+                ),
                 Text(
                   Location.instance.country,
                   style: AppTypography.thin14(),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),
@@ -47,7 +49,7 @@ class CustomAppBar extends StatelessWidget {
                     isCenter: false,
                   ),
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
                 Text(
                   "${daily.temperatureMin}° ~ ${daily.temperatureMax}°",
                 ),

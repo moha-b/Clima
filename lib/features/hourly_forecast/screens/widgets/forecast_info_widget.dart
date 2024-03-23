@@ -9,14 +9,10 @@ class ForecastInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height! * 0.2,
+      height: 150.h,
       width: double.infinity,
-      margin: EdgeInsets.only(
-        left: AppDimensions.width! * 0.03,
-        right: AppDimensions.width! * 0.03,
-        top: AppDimensions.height! * 0.02,
-      ),
-      padding: const EdgeInsets.all(16),
+      margin: 16.horizontalInsets,
+      padding: 16.allInsets,
       decoration: AppDecoration.container(context),
       child: Row(
         children: List.generate(3, (index) {
@@ -32,9 +28,9 @@ class ForecastInfoWidget extends StatelessWidget {
                   child: SvgPicture.asset(list[index].image,
                       fit: BoxFit.contain, width: double.infinity),
                 ),
-                const SizedBox(height: 15),
+                SizedBox(height: 15.h),
                 Text(list[index].title, style: AppTypography.bold14()),
-                const SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 Text("${list[index].content}${list[index].prefix}"),
               ],
             ),

@@ -11,16 +11,16 @@ class HourlyForecastDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppDimensions.height! * 0.2,
+      height: 150.h,
       child: ListView.separated(
         itemCount: hourlyForecast.time.length,
-        padding: EdgeInsets.symmetric(horizontal: AppDimensions.width! * 0.03),
+        padding: 16.horizontalInsets,
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) => Container(
           decoration: AppDecoration.container(context),
-          width: AppDimensions.width! * 0.25,
-          padding: const EdgeInsets.all(8),
+          width: 90.w,
+          padding: 8.allInsets,
           child: Column(
             children: [
               Expanded(
@@ -32,7 +32,7 @@ class HourlyForecastDetails extends StatelessWidget {
                   child: Lottie.asset(hourlyForecast.image[index]),
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: 8.h),
               Expanded(
                 child: Text(
                   hourlyForecast.temperature[index].toString(),
@@ -51,7 +51,7 @@ class HourlyForecastDetails extends StatelessWidget {
             ],
           ),
         ),
-        separatorBuilder: (context, index) => const SizedBox(width: 8),
+        separatorBuilder: (context, index) => SizedBox(width: 8.w),
       ),
     );
   }
