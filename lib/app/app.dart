@@ -1,5 +1,7 @@
+import 'package:clima/app/bloc/app_bloc.dart';
 import 'package:clima/app/bloc/bloc.dart';
 import 'package:clima/app/widgets/widgets.dart';
+import 'package:clima/core/navigation/navigation.dart';
 import 'package:clima/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
     AppDimensions.config(context);
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => AppBloc()),
         BlocProvider(
           create: (context) => LocationBloc()..add(GetLocationEvent()),
         ),
@@ -27,6 +30,9 @@ class MyApp extends StatelessWidget {
             title: "Clima",
             theme: theme,
             debugShowCheckedModeBanner: false,
+            navigatorKey: NavigationHelper.navigatorKey,
+            onGenerateRoute: NavigationHelper.generateRoute,
+            navigatorObservers: [NavigationHelper.routeObserver],
             home: BlocBuilder<LocationBloc, LocationState>(
               builder: (BuildContext context, LocationState state) {
                 if (state is AskForLocationPermissionState) {
