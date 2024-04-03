@@ -72,8 +72,7 @@ This will launch the Flutter app, allowing you to utilize Google Maps and OpenWe
 
 ## Preview 📱
 
-https://github.com/moha-b/Clima/assets/73842931/c0a0ccd2-671c-4f00-9b5f-61fbdafba621
-
+https://github.com/moha-b/Clima/assets/73842931/57eac14e-1714-4a93-a410-056fd524ba3c
 
 
 ## Techniques 🛠️
