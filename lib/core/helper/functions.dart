@@ -1,7 +1,8 @@
-import 'package:clima/core/caching/caching.dart';
 import 'package:clima/core/helper/lotte_cach_helper.dart';
-import 'package:clima/core/managers/notification_service.dart';
 import 'package:flutter/material.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
+
+import '../managers/managers.dart';
 
 T isNotNull<T>(T variable) {
   return variable ?? -1 as T;
@@ -38,9 +39,10 @@ bool isNull(dynamic object, String property) {
 
 initialization() async {
   WidgetsFlutterBinding.ensureInitialized();
+  WakelockPlus.enable();
+  DependencyManager.init();
   await Future.wait([
-    CacheHelper.init(),
-    LottieCache.cache(),
-    NotificationService.initialize(),
+    NotificationManager.init(),
+    LottieCache.init(),
   ]);
 }

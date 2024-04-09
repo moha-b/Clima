@@ -1,16 +1,17 @@
 import '../enum/weather_state.dart';
 
 extension WeatherStateExtension on WeatherState {
-  String getMessage(int todayTemperature, int yesterdayTemperature) {
+  String getMessage() {
     String comparisonMessage = '';
 
-    if (todayTemperature > yesterdayTemperature) {
-      comparisonMessage = 'It\'s a bit warmer than yesterday';
-    } else if (todayTemperature < yesterdayTemperature) {
-      comparisonMessage = 'It\'s a bit cooler than yesterday';
-    } else {
-      comparisonMessage = 'It\'s the same as yesterday';
-    }
+    //
+    // if (todayTemperature > yesterdayTemperature) {
+    //   comparisonMessage = 'It\'s a bit warmer than yesterday';
+    // } else if (todayTemperature < yesterdayTemperature) {
+    //   comparisonMessage = 'It\'s a bit cooler than yesterday';
+    // } else {
+    //   comparisonMessage = 'It\'s the same as yesterday';
+    // }
 
     switch (this) {
       case WeatherState.Storm:

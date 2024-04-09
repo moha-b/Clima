@@ -10,7 +10,7 @@ class LottieCache {
     _compositions[assetName] = await AssetLottie(assetName).load();
   }
 
-  static Future<void> cache() async {
+  static Future<void> init() async {
     await add(AppLottie.fetchLocation);
     await add(AppLottie.locationNotFound);
     await add(AppLottie.noInternet);

@@ -18,32 +18,6 @@ class LocationHelper {
   }
 
   LocationHelper._();
-
-  // Future<Position?> determinePosition() async {
-  //   try {
-  //     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  //     if (!serviceEnabled) {
-  //       throw LocationServiceException('Location services are disabled.');
-  //     }
-  //
-  //     LocationPermission permission = await Geolocator.checkPermission();
-  //     if (permission == LocationPermission.denied) {
-  //       permission = await Geolocator.requestPermission();
-  //       if (permission == LocationPermission.denied) {
-  //         throw LocationServiceException('Location permissions are denied.');
-  //       }
-  //     }
-  //
-  //     if (permission == LocationPermission.deniedForever) {
-  //       throw LocationServiceException(
-  //           'Location permissions are permanently denied.');
-  //     }
-  //
-  //     return await Geolocator.getCurrentPosition();
-  //   } catch (e) {
-  //     throw LocationServiceException('Error: $e');
-  //   }
-  // }
   Future<bool> checkPermission() async {
     try {
       LocationPermission permission = await Geolocator.checkPermission();
@@ -67,6 +41,10 @@ class LocationHelper {
 
   Future<Position> getLatLong() async {
     return await Geolocator.getCurrentPosition();
+  }
+
+  Future<void> updateLocation() async {
+    return await getPositionDetails(currentPosition: await getLatLong());
   }
 
   Future<void> getPositionDetails({required Position? currentPosition}) async {
