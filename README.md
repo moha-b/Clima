@@ -1,6 +1,15 @@
-[![cover](assets/images/Cover.png)](https://www.figma.com/community/file/1023658389987124693/mikoaj-niznik-3d-weather-icons)
+<p align="center"><img width="120" height="120" src="assets/images/logo.png"></p>
+
+
+<div align="center">
+
+[![stars - clima](https://img.shields.io/github/stars/moha-b/clima?style=social)](https://github.com/moha-b/clima)
+[![forks - clima](https://img.shields.io/github/forks/moha-b/clima?style=social)](https://github.com/moha-b/clima)
+
+</div>
+
 # Clima 🌤️
-Clima is a user-friendly weather app designed to provide you with accurate and up-to-date weather information in the simplest way possible. With Clima, you can easily check the current temperature in your location for today and the next six days, allowing you to plan your activities accordingly. The app also offers detailed hourly forecasts, providing you with weather updates every three hours throughout the day. Clima's standout feature lies in its minimalistic and intuitive design, ensuring a hassle-free experience for users. Say goodbye to complicated interfaces and overwhelming data—Clima focuses on delivering essential weather information, making it the go-to choice for anyone seeking a straightforward and reliable weather app.
+Clima is a user-friendly weather app designed to provide you with almost accurate and up-to-date weather information in the simplest way possible. With Clima, you can easily check the current temperature in your location for today and the next six days, allowing you to plan your activities accordingly. The app also offers detailed hourly forecasts, providing you with weather updates every three hours throughout the day.  Say goodbye to complicated interfaces and overwhelming data—Clima focuses on delivering essential weather information, making it the go-to choice for anyone seeking a straightforward and reliable weather app.
 
 ## Installation Instructions: 💣
 Before you start, you'll need to obtain API keys from the following services:
@@ -10,12 +19,60 @@ Before you start, you'll need to obtain API keys from the following services:
     - Create a new project and enable the Google Maps API.
     - Generate an API key and restrict its usage as needed.
     - To integrate the map with your project, follow the [Configuration](https://pub.dev/packages/google_maps_flutterw)
+- **~~OpenWeather API Key:~~** 
+    - ~~Go to the [OpenWeather website](https://openweathermap.org/).~~
+    - ~~Sign up for a free account and generate an API key.~~
+- **Open-Meteo API**
+  - Go to the [Open-Meteo website](https://open-meteo.com/).
+  - You don't need to sign up because this api don't have `api key`
+  - Check whatever end point you need from the [Documentation](https://open-meteo.com/en/docs/)
+- **News API Key:**
+  - Go to the [NewsAPI website](https://newsapi.org/).
+  - Sign up for a free account and generate an API key.
+> Due to insufficient data, the `OpenWeather` API is unable to provide the required information. However, the `Open-Meteo` API offers a variety of options to choose from.
 
-- **OpenWeather API Key:**
-    - Go to the [OpenWeather website](https://openweathermap.org/).
-    - Sign up for a free account and generate an API key.
 
-### Setting Up API Keys
+![cover image](assets/images/Cover.png)
+
+
+### Setting Up API Keys `[ Important ]`
+Let's start with setting up the APIs in your project. We can begin with **Clima** and then move on to other approaches.
+
+To begin with, we need to define the API keys using this command.
+```shell
+flutter run --dart-define=YOUR_API_KEY=API_KEY_VALUE --dart-define=YOUR_API_KEY=API_KEY_VALUE
+```
+then we can get these values in your Dart code like this in a [EnvHelper](lib/core/helper/env_helper.dart). 
+And use this class as your Environment specific config all over the project.
+```dart
+abstract class EnvHelper {
+  static const GOOGLE_MAPS_API = String.fromEnvironment('GOOGLE_MAPS_API');
+  static const NEWS_API_KEY = String.fromEnvironment('NEWS_API_KEY');
+}
+```
+**Android configuration**
+
+To make the necessary changes, please navigate to your app module's Gradle file and add the provided code.
+```groovy
+def dartEnv = [
+        GOOGLE_MAPS_API: '', // leave it like this 
+        NEWS_API_KEY: ''    // it have to be empty
+];
+if (project.hasProperty('dart-defines')) {
+  dartEnv = dartEnv + project.property('dart-defines')
+          .split(',')
+          .collectEntries { entry ->
+            def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+            [(pair.first()): pair.last()]
+          }
+}
+```
+**iOS configuration**
+
+I didn't make it 🙂
+
+**Other Approaches**
+
 1. Clone the repository to your local machine:
 ```bash
 git clone https://github.com/your-username/your-project.git
@@ -25,7 +82,7 @@ cd your-project
 ```
 # .env file
 GOOGLE_MAPS_API_KEY=your-google-maps-api-key
-OPENWEATHER_API_KEY=your-openweather-api-key
+NEWS_API_KEY=your-news-api-key
 ```
 3. Save the .env file in the root of your Flutter project directory.
 
@@ -55,6 +112,7 @@ This will launch the Flutter app, allowing you to utilize Google Maps and OpenWe
 > **Note**
 > Make sure to add the .env file to your `.gitignore` to keep your API keys private and not expose them in your version control system. This ensures the security of your API keys.
 
+
 ## Features ✨
 - Current Weather: View the real-time weather conditions for your current location, including temperature, date, and weather description.
 
@@ -77,11 +135,9 @@ https://github.com/moha-b/Clima/assets/73842931/57eac14e-1714-4a93-a410-056fd524
 
 ## Techniques 🛠️
 - Minimum SDK level 21
-- Compile SDK Version 33
-- Font:
-    - Manrope
-- Architecture
-    - Mvvm
+- Compile SDK Version 34
+- Font : Manrope
+- Architecture : Mvvm
 - Dio 
     - A powerful and easy-to-use HTTP client for Flutter and Dart.
 - Permission Handler 
@@ -106,8 +162,8 @@ https://github.com/moha-b/Clima/assets/73842931/57eac14e-1714-4a93-a410-056fd524
     - A Dart package that helps in comparing objects for equality in a more convenient way, enhancing the simplicity of value-based equality checks.
 - Flutter SVG:
     - An SVG rendering and widget library for Flutter, enabling the display of Scalable Vector Graphics files in Flutter applications.
-- Connectivity Plus:
-    - A Flutter plugin for monitoring network connectivity, providing information about the device's network status and connection type.
+- Wakelock Plus:
+    - Allows you to keep the device screen awake, i.e. prevent the screen from sleeping.
 - Google Maps Flutter:
     - A Flutter plugin for integrating Google Maps into Flutter applications, allowing developers to display interactive maps with markers, polylines, and more.
 
