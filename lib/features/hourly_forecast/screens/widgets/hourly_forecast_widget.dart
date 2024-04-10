@@ -15,7 +15,7 @@ class HourlyForecastWidget extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: AppDimensions.height! * 0.28,
+            expandedHeight: 250.h,
             flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.pin,
               background: CustomAppBar(
@@ -24,12 +24,9 @@ class HourlyForecastWidget extends StatelessWidget {
               ),
             ),
           ),
+          SliverToBoxAdapter(child: SizedBox(height: 16.h)),
           SliverToBoxAdapter(
-            child: SizedBox(height: AppDimensions.height! * 0.02),
-          ),
-          SliverToBoxAdapter(
-            child: HourlyForecastDetails(hourlyForecast: hourlyForecast),
-          ),
+              child: HourlyForecastDetails(hourlyForecast: hourlyForecast)),
           SliverToBoxAdapter(
             child: NewsWidget(
               article: article,
@@ -37,17 +34,15 @@ class HourlyForecastWidget extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: ForecastInfoWidget(forecast: dailyForecast),
-          ),
+              child: ForecastInfoWidget(forecast: dailyForecast)),
+          SliverToBoxAdapter(child: SizedBox(height: 16.h)),
           SliverToBoxAdapter(
             child: DayAndNight(
               sunset: dailyForecast.sunset,
               sunrise: dailyForecast.sunrise,
             ),
           ),
-          SliverToBoxAdapter(
-            child: SizedBox(height: AppDimensions.height! * 0.02),
-          ),
+          SliverToBoxAdapter(child: SizedBox(height: 16.h)),
         ],
       ),
     );

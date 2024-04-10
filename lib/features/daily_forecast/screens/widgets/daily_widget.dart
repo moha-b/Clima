@@ -11,8 +11,8 @@ class DailyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height! * 0.197,
-      padding: const EdgeInsets.all(8),
+      height: 150.h,
+      padding: 8.allInsets,
       decoration: AppDecoration.container(context, isBordered: true),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

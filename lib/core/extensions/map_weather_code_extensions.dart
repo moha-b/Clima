@@ -1,5 +1,5 @@
 import '../enum/weather_state.dart';
-import '../utils/app_images.dart';
+import '../utils/utils.dart';
 
 extension MapWeatherCode on int {
   WeatherState mapToWeatherState() {

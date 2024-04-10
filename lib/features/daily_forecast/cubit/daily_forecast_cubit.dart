@@ -1,7 +1,6 @@
 import 'package:clima/core/extensions/map_weather_code_extensions.dart';
 import 'package:clima/core/helper/functions.dart';
 import 'package:clima/core/helper/location_helper.dart';
-import 'package:clima/features/daily_forecast/data/repo/daily_forecast_repo_impl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -11,9 +10,9 @@ import '../data/repo/daily_forecast_repo.dart';
 part 'daily_forecast_state.dart';
 
 class DailyForecastCubit extends Cubit<DailyForecastState> {
-  final DailyForecastRepository _repository = DailyForecastRepoImpl();
+  final DailyForecastRepository _repository;
 
-  DailyForecastCubit() : super(DailyForecastInitial());
+  DailyForecastCubit(this._repository) : super(DailyForecastInitial());
 
   fetchDailyData() async {
     var result = await _repository.fetchWeatherData(

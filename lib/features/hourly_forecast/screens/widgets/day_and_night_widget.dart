@@ -11,15 +11,11 @@ class DayAndNight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        left: AppDimensions.width! * 0.03,
-        right: AppDimensions.width! * 0.03,
-        top: AppDimensions.height! * 0.02,
-      ),
-      padding: EdgeInsets.all(AppDimensions.width! * 0.035),
+      margin: 16.horizontalInsets,
+      padding: 16.allInsets,
       decoration: AppDecoration.container(context),
       width: AppDimensions.width,
-      height: AppDimensions.height! * 0.25,
+      height: 200.h,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -32,10 +28,7 @@ class DayAndNight extends StatelessWidget {
                 Text(sunrise),
                 const SizedBox(height: 5),
                 Expanded(
-                  child: Image.asset(
-                    AppImages.daySun,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(AppImages.daySun, fit: BoxFit.cover),
                 ),
               ],
             ),
@@ -49,10 +42,7 @@ class DayAndNight extends StatelessWidget {
                 Text(sunset),
                 const SizedBox(height: 5),
                 Expanded(
-                  child: Image.asset(
-                    AppImages.nightMoon,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(AppImages.nightMoon, fit: BoxFit.cover),
                 ),
               ],
             ),

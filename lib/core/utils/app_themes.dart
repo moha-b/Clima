@@ -1,5 +1,4 @@
-import 'package:clima/core/utils/app_colors.dart';
-import 'package:flutter/material.dart';
+part of 'utils.dart';
 
 class AppThemes {
   static ThemeData light = ThemeData(

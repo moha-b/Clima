@@ -1,3 +1,5 @@
+part of 'utils.dart';
+
 class AppImages {
   static const String _weatherImagesPath = "assets/images/weather";
   static const String windSvg = "$_weatherImagesPath/wind.svg";

@@ -1,4 +1,4 @@
-import 'package:clima/core/utils/app_images.dart';
+import 'package:clima/core/utils/utils.dart';
 import 'package:lottie/lottie.dart';
 
 class LottieCache {
@@ -10,7 +10,7 @@ class LottieCache {
     _compositions[assetName] = await AssetLottie(assetName).load();
   }
 
-  static Future<void> cache() async {
+  static Future<void> init() async {
     await add(AppLottie.fetchLocation);
     await add(AppLottie.locationNotFound);
     await add(AppLottie.noInternet);

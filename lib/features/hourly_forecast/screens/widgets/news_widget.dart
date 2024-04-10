@@ -37,13 +37,9 @@ class _NewsWidgetState extends State<NewsWidget> {
   Widget build(BuildContext context) {
     list = news();
     return Container(
-      height: AppDimensions.height! * 0.13,
-      margin: EdgeInsets.only(
-        left: AppDimensions.width! * 0.03,
-        right: AppDimensions.width! * 0.03,
-        top: AppDimensions.height! * 0.02,
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      height: 110.h,
+      margin: 16.allInsets,
+      padding: EdgeInsets.symmetric(vertical: 8.w, horizontal: 16.h),
       decoration: AppDecoration.container(context),
       child: Column(
         children: [
@@ -64,9 +60,9 @@ class _NewsWidgetState extends State<NewsWidget> {
             children: List.generate(
               list.length,
               (index) => Container(
-                margin: const EdgeInsets.symmetric(horizontal: 4),
-                width: 8,
-                height: 8,
+                margin: 4.horizontalInsets,
+                width: 8.w,
+                height: 8.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _currentPage == index
